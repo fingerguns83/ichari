@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Regions extends Migration
+class ClaimHasUser extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class Regions extends Migration
      */
     public function up()
     {
-        Schema::create('regions', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+        Schema::create('claim_has_user', function (Blueprint $table) {
+            $table->integer('claim_id');
+            $table->integer('user_id');
         });
     }
 

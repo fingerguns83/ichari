@@ -12,7 +12,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/socialite": "^5.4",
         "laravel/tinker": "^2.5",
-        "restcord/restcord": "^0.5.0",
+        "laravelcollective/html": "^6.2",
         "socialiteproviders/discord": "^4.1"
     },
     "require-dev": {

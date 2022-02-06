@@ -33,9 +33,8 @@
         <div class="col-span-2 py-4 flex justify-center text-center items-center">
           <div class="h-full flex flex-col justify-center items-center content-center">
             <img src="/images/impulse_head.png" width="80" height="80" class="rounded-full drop-shadow-lg border-2 border-black">
-            <p>
+            <p class="mt-4">
               <span class="underline font-medium text-2xl">impulseSV Patron Server</span><br>
-              <span class="font-normal text-xl">Login below with Discord.</span>
             </p>
             <button class="w-full h-1/5 mt-10 bg-[#7289DA] rounded-2xl px-3 drop-shadow-md hover:drop-shadow-none active:text-yellow-500" onclick="auth()">
               <div class="h-full w-full flex justify-center items-center content-center text-center">

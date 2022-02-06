@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -18,13 +19,9 @@ use Illuminate\Support\Facades\Http;
 
 Route::get('/', function () {
     if (Auth::check()){
-        return view('dashboard');
+        return view('dashboard', ['show' => 'dashboard']);
     }
     return view('start');
-});
-
-Route::get('/dashboard', function (){
-    return view('dashboard');
 });
 
 Route::get('/auth/redirect', function(){
@@ -36,7 +33,7 @@ Route::get('/auth/callback', function(){
     $user = User::where('discord_id', $discordUser->id)->first();
     if ($user){
         Auth::login($user, true);
-        return redirect('/dashboard');
+        return redirect('/section/dashboard');
     }
     else {
         
@@ -52,7 +49,7 @@ Route::get('/auth/callback', function(){
                 'discord_avatar' => $discordUser->avatar
             ]);
             Auth::login($user, true);
-            return redirect('/dashboard');
+            DashboardController::show('dashboard');
         }
         else {
             abort(401);
@@ -60,3 +57,5 @@ Route::get('/auth/callback', function(){
     }
     
 });
+
+Route::get('/section/{feature}', [DashboardController::class, 'show']);

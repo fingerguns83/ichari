@@ -17,6 +17,7 @@ $user = Auth::user();*/
     <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Styles -->
     <style>
         /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
@@ -26,12 +27,10 @@ $user = Auth::user();*/
       }
     </style>
   </head>
-  <body class="grid-cols-5 grid">
+  <body class="grid-cols-6 grid">
 
-    @include('/modules/sidebar')
+    @include('/modules/sidebar/base')
 
-    <div class="inline-block m-0 gap-0 col-span-4 h-screen bg-gradient-to-bl to-neutral-100 from-slate-200">
-    
-    </div>
+    @include('/modules/cardholder/base')
   </body>
 </html>
