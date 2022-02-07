@@ -13,6 +13,6 @@ class DashboardController extends BaseController
     if (!isset($feature)){
       $feature = 'dashboard';
     }
-    return view('dashboard', ['show' => $feature]);
+    return view('dashboard', ['show' => $feature]); 
   }
 }

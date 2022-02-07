@@ -2,14 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class FormController extends BaseController
+class FormController extends Controller
 {
-  public function claimRequest(){
-    
-  }
+    /**
+     * Handle the incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function __invoke(Request $request){
+        echo Auth::id();
+        $submittedToken = $request->post('_token');
+        $sessionToken = $request->session()->get('_token');
+        if ($submittedToken == $sessionToken){
+            print_r($request->post());
+        }
+        
+    }
 }

@@ -1,11 +1,15 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Http;
+use Symfony\Component\HttpKernel\Controller\ErrorController;
+
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FormController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,19 +41,41 @@ Route::get('/auth/callback', function(){
     }
     else {
         
-        $identityCheck = sprintf("https://bot.ichari.net/?d=%s&u=%s", getenv('DISCORD_AUTH_GUILD'), $discordUser->id);
-        $response = Http::get($identityCheck);
+        $verifURL = sprintf("https://bot.ichari.net/?d=%s&u=%s", getenv('DISCORD_AUTH_GUILD'), $discordUser->id);
+        $verifResponse = Http::get($verifURL);
 
-        if (boolval($response)){
-            $user = User::create([
+        if (boolval($verifResponse)){
 
-                'discord_id' => $discordUser->id,
-                'discord_name' => $discordUser->name,
-                'discord_nickname' => $discordUser->nickname,
-                'discord_avatar' => $discordUser->avatar
-            ]);
-            Auth::login($user, true);
-            DashboardController::show('dashboard');
+            $allowedRoles = explode(',', getenv('DISCORD_REQUIRED_ROLES'));
+            $verifResponseArr = json_decode($verifResponse->body(), true);
+            $verified = false;
+            foreach($verifResponseArr['roles'] as $i){
+                if (in_array($i, $allowedRoles)){
+                    $verified = true;
+                }
+            }
+
+            if ($verified){
+                if ($verifResponseArr['nick']){
+                    $name = $verifResponseArr['nick'];
+                }
+                else {
+                    $name = $discordUser->name;
+                }
+                $user = User::create([
+                    'discord_id' => $discordUser->id,
+                    'discord_name' => $name,
+                    'discord_unique' => $discordUser->nickname,
+                    'discord_avatar' => $discordUser->avatar
+                ]);
+                Auth::login($user, true);
+                return redirect('/section/dashboard');
+            }
+            else {
+                abort(401);
+            }
+
+
         }
         else {
             abort(401);
@@ -59,3 +85,4 @@ Route::get('/auth/callback', function(){
 });
 
 Route::get('/section/{feature}', [DashboardController::class, 'show']);
+Route::post('/forms', FormController::class);

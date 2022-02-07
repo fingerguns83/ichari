@@ -17,10 +17,11 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('discord_id');
             $table->string('discord_name');
-            $table->string('discord_nickname');
+            $table->string('discord_unique');
             $table->string('discord_avatar');
             $table->string('timezone')->default('UTC');
             $table->integer('is_admin')->default('0');
+            $table->integer('is_banned')->default('0');
 
             $table->rememberToken();
             $table->timestamps();
