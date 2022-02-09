@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Http;
 use Symfony\Component\HttpKernel\Controller\ErrorController;
 
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\FormController;
+use App\Http\Controllers\ClaimRequestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,11 +78,11 @@ Route::get('/auth/callback', function(){
 
         }
         else {
-            abort(401);
+            abort(403);
         }
     }
     
 });
 
-Route::get('/section/{feature}', [DashboardController::class, 'show']);
-Route::post('/forms', FormController::class);
+Route::get('/section/{feature}', [DashboardController::class, 'show'])->middleware('auth');
+Route::post('/forms/{type}', ClaimRequestController::class)->middleware('auth');

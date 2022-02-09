@@ -4,7 +4,7 @@ use Collective\Html\FormFacade;
 use Symfony\Component\Routing\Route;
 ?>
 
-  {{ Form::open(['url' => '/forms', 'name' => 'new_claim_request', 'id' => 'new_claim_request_form']) }}
+  {{ Form::open(['url' => '/forms/claim_request', 'name' => 'new_claim_request', 'id' => 'new_claim_request_form']) }}
 
 <!--type-->
 <div>
@@ -240,8 +240,10 @@ use Symfony\Component\Routing\Route;
   }
   $('#submit-request').click(function(){
     var count = 0;
+    $('#owners').prop('disabled', true);
     coowners.forEach(function(owner){
       $('#submit-request-container').after('<input type="text" name="coowners['+count+']" value="'+owner+'" style="display:none;">');
+      count++;
     });
 
     for (const [key, value] of Object.entries(baseCoords)){
