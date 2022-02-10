@@ -29,7 +29,7 @@ class ClaimRequestController extends Controller
         'northwest_x' => $request->post('coords')['x1'],
         'northwest_z'=> $request->post('coords')['z1'],
         'southeast_x'=> $request->post('coords')['x2'],
-        'southeast_z'=> $request->post('coords')['x2'],
+        'southeast_z'=> $request->post('coords')['z2'],
         'requested_by' => Auth::id(),
         'shared' => boolval($request->post('shared'))
       ]);

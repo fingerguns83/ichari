@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/css/app.css">
-    <title>ichari</title>
+    <title>{{getenv('APP_NAME')</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com"> 

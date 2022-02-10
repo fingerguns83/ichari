@@ -7,27 +7,24 @@ use Symfony\Component\Routing\Route;
   {{ Form::open(['url' => '/forms/claim_request', 'name' => 'new_claim_request', 'id' => 'new_claim_request_form']) }}
 
 <!--type-->
-<div>
-  <div class="flex content-evenly items-center justify-left" id="claim-type">
-    <div>
-      <span class="mr-2">{{ Form::label('type', 'Claim Type:') }}</span>
-      <?php
-        $claimTypesDB = DB::table('claim_types')
-          ->select('id', 'name')
-          ->get();
-        foreach ($claimTypesDB as $type){
-          $claimTypes[$type->id] = $type->name;
-        }
-      ?>
-      {{ Form::select('type', $claimTypes) }}
-    </div>
-    {{ Form::button('<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12A10 10 0 0 1 12 2a10 10 0 0 1 10 10m-12 6l6-6l-6-6l-1.4 1.4l4.6 4.6l-4.6 4.6L10 18z" fill="currentColor"/></svg>', ['class' => 'text-sky-600 ml-2', 'id' => 'submit-type']) }}
+<div class="flex content-evenly items-center justify-left" id="claim-type">
+  <div>
+    <span class="mr-2">{{ Form::label('type', 'Claim Type:') }}</span>
+    <?php
+      $claimTypesDB = DB::table('claim_types')->get();
+      foreach ($claimTypesDB as $type){
+        $claimTypes[$type->id] = $type->name;
+      }
+    ?>
+    {{ Form::select('type', $claimTypes) }}
   </div>
-</div><br>
+  {{ Form::button('<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12A10 10 0 0 1 12 2a10 10 0 0 1 10 10m-12 6l6-6l-6-6l-1.4 1.4l4.6 4.6l-4.6 4.6L10 18z" fill="currentColor"/></svg>', ['class' => 'text-sky-600 ml-2', 'id' => 'submit-type']) }}
+</div>
+
 
 <!--location-->
 <div>
-  <div id="location" class="content-center items-center justify-left" style="display: none;">
+  <div id="location" class="content-center items-center justify-left w-full" style="display: none;">
     <span id="location-label" class="block mr-2">{{ Form:: label('location', '')}}</span>
     <div class="flex justify-left items-center content-center">
       <div class="w-1/2 items-baseline">
@@ -44,8 +41,8 @@ use Symfony\Component\Routing\Route;
           {{ Form::number('z2', '0', ['class' => 'w-3/5']) }}
         </div>    
       </div>
-      <span id="shared-base" class="ml-4" style="display:none;">
-        <span class="mr-2 text-xl">{{ Form::label('shared', 'Shared base ')}}</span>
+      <span id="shared-claim" class="ml-4" style="display:none;">
+        <span class="mr-2 text-xl">{{ Form::label('shared', 'Shared claim ')}}</span>
         {{ Form::checkbox('shared', 'shared', false, ['class' => 'form-checkbox text-sky-600 h-6 w-6']) }}
       </span>
       {{ Form::button('<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12A10 10 0 0 1 12 2a10 10 0 0 1 10 10m-12 6l6-6l-6-6l-1.4 1.4l4.6 4.6l-4.6 4.6L10 18z" fill="currentColor"/></svg>', ['class' => 'text-sky-600 ml-2', 'id' => 'submit-location']) }}
@@ -56,11 +53,11 @@ use Symfony\Component\Routing\Route;
       <span id="size-output-error" class="text-xl ml-4 text-red-500"></span>
     </div>
   </div>
-</div><br>
+</div>
 
-<!--owners-->
-<div>
-  <div id="owners-selection" class="flex content-center items-center justify-left" style="display:none;">
+<!--Co-Owners-->
+<div id="co-owners" style="display:none;">
+  <div id="owners-selection" class="flex content-center items-center justify-left">
     <span id="owners-label" class="block mr-2">{{ Form:: label('Co-owner(s): ', '')}}</span>
     <?php
       $allUsers = DB::table('users')
@@ -73,66 +70,89 @@ use Symfony\Component\Routing\Route;
       }
     ?>
     {{ Form::select('owners', $availableUsers, '', ['id' => 'owners', 'disabled'])}}
-    {{ Form::button('<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M17 13h-4v4h-2v-4H7v-2h4V7h2v4h4m-5-9A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2z" fill="currentColor"/></svg>', ['class' => 'text-sky-600 ml-2', 'id' => 'add-owner']) }}
+    {{ Form::button('<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12A10 10 0 0 1 12 2a10 10 0 0 1 10 10m-12 6l6-6l-6-6l-1.4 1.4l4.6 4.6l-4.6 4.6L10 18z" fill="currentColor"/></svg>', ['class' => 'text-sky-600 ml-2', 'id' => 'submit-owners']) }}
+    
   </div>
   <ul id="owners-added" class="mt-2">
     
   </ul>
-</div><br>
+</div>
 
-<!--submit request-->
-<div id="submit-request-container" class="flex content-center justify-center items-center" style="display: none;">
-{{ Form::button('Submit Request', ['class' => 'px-4 py-2 text-3xl text-slate-200 bg-sky-600 rounded-xl', 'id' => 'submit-request']) }}
+<!--review & submit request-->
+<div id="review" style="display: none;">
+  <div class="mb-4 text-3xl underline">Review:</div>
+  <div id="review-details">
+    <span id="review-type" class="font-medium">Claim Type:
+      <span id="review-type-content" class="ml-2 font-normal">test</span>
+    </span><br>
+    <span id="review-location" class="font-medium">Location:
+      <span id="review-location-content" class="ml-2 font-normal">test</span>
+    </span><br>
+    <div id="review-owners" class="grid grid-cols-5 w-full">
+      <div class="font-medium">Owners:</div>
+      <div class="ml-2 font-normal col-span-4">
+        <ul id="review-owners-content">
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="submit-container" class="flex content-center justify-center items-center mt-6">
+  {{ Form::button('Submit Request', ['class' => 'px-4 py-2 text-3xl text-slate-200 bg-sky-600 rounded-xl', 'id' => 'submit-request']) }}
+  </div>
 </div>
 {{ Form::close() }}
 
 <!--javascript-->
 <script>
-  var type = 0;
+
+  var typeId = 0;
   var coords = {};
+  var claimType = {};
   $('#submit-type').click(function(){
     $('#submit-type').hide();
       $('#type').prop('disabled', true);
       $('#type').css('color', 'gray');
-      type = $('#type').val();
+      typeId = $('#type').val();
 
-      switch(type){
-        case '1':
-          $('#location-label').html('Enter coordinates of opposite corners of requested area:');
-          $('#coords2').show();
-          break;
-        case '2':
-          $('#location-label').html('Enter any coordinate in your center chunk:');
-          $('#shared-base').show();
-          break;
-        case '3':
-          $('#location-label').html('Enter coordinates of opposite corners of requested area:');
-          $('#coords2').show();
-          break;
-        default:
-          window.location.href("https://ichari.isvserver.live/section/claims");
-      }      
-      
-      $('#location').show();
+      $.get('https://ichari.isvserver.live/api/fetch_model?table=claim_types&id='+typeId, function(data){
+        claimType = jQuery.parseJSON(data);
+        switch(claimType.prompt_id){
+          case 1:
+            $('#location-label').html('Enter coordinates of opposite corners of requested area:');
+            $('#coords2').show();
+            break;
+          case 2:
+            $('#location-label').html('Enter any coordinate in your center chunk:');
+            break;
+          default:
+            window.location.href = "https://ichari.isvserver.live/section/claims";
+        }
+        if (claimType.shareable){
+          $('#shared-claim').show();
+        }  
+        $('#claim-type').hide("slide", { direction: "left" }, 400, function(){
+          $('#location').fadeIn(400);
+        });
+      });   
   });
 
   var locationValid = false;
 
   var shared = false;
-  var baseCoords = [];
-  function displaySize(){
+  var claimCoords = [];
+  function displaySize(outputSize){
     shared = $('#shared').prop('checked');
 
     if (!shared){
-      var chunkAdd = 8;
-      var chunkSubtract = 7;
+      var chunkAdd = Math.round((claimType.size/2));
+      var chunkSubtract = -Math.round(-(claimType.size/2));
     }
     else {
-      var chunkAdd = 11;
-      var chunkSubtract = 10;
+      var chunkAdd = Math.round((claimType.alternate_size/2));
+      var chunkSubtract = -Math.round(-(claimType.alternate_size/2));
     }
 
-    if (type == '1' || type == '3'){
+    if (claimType.prompt_id == 1){
       input_x1 = $('#x1').val();
       input_z1 = $('#z1').val();
       input_x2 = $('#x2').val();
@@ -159,13 +179,13 @@ use Symfony\Component\Routing\Route;
       var size_z = coords['z2'] - coords['z1'] + 1;
       var output = size_x+' × '+size_z;
 
-      if (size_x < 30 || size_z < 30 || size_x > 30 || size_z > 30){
+      if (size_x != claimType.size || size_z != claimType.size){
         $('#size-output-error').html('Incorrect Size');
       }
       else {
         $('#size-output-error').html('');
         locationValid = true;
-        baseCoords = coords;
+        claimCoords = coords;
       }
 
       $('#size-output').html(output);
@@ -184,9 +204,11 @@ use Symfony\Component\Routing\Route;
       var size_z = coords['z2'] - coords['z1'] + 1;
 
       var output = coords['x1']+', '+coords['z1']+' × '+coords['x2']+', '+coords['z2'];
-      $('#size-output').html(output);
+      if (outputSize){
+        $('#size-output').html(output);
+      }
       locationValid = true;
-      baseCoords = coords;
+      claimCoords = coords;
     }
   }
 
@@ -195,7 +217,7 @@ use Symfony\Component\Routing\Route;
   });
 
   $('#submit-location').click(function(){
-    displaySize();
+    displaySize(false)
     if (locationValid){
       $('#x1, #x2, #z1, #z2, #check-size, #shared').prop('disabled', true);
       
@@ -203,20 +225,27 @@ use Symfony\Component\Routing\Route;
       if (shared){
         $('#owners').prop('disabled', false);
         $('#owners').prepend('<option id="owners-default" disabled selected value>--Select A Player--</option>');
-        $('#owners-selection').show();
+        $('#location').hide("slide", { direction: "left" }, 400, function(){
+          $('#co-owners').fadeIn(400);
+        });
+        
       }
       else {
-        $('#submit-request-container').show();
+        $('#location').hide("slide", { direction: "left" }, 400, function(){
+            $('#review-type-content').html(claimType.name);
+            $('#review-location-content').html(claimCoords['x1']+', '+claimCoords['z1']+' to '+claimCoords['x2']+', '+claimCoords['z2']);
+            $('#review-owners').hide();
+          $('#review').fadeIn(400);
+        });
       }
     }
   });
 
 
   var coowners = [];
-  $('#add-owner').click(function(){
+  $('#owners').change(function(){
     var newOwner = $('#owners').val();
     if (newOwner){
-      $('#submit-request-container').show();
       if (coowners.length < 4){
         coowners.push(newOwner);
         $("#owners > option[value="+newOwner+"]").prop('disabled', true);
@@ -234,22 +263,32 @@ use Symfony\Component\Routing\Route;
     coowners.splice(index, 1);
     $('#' + owner).remove();
     $("#owners > option[value="+owner+"]").prop('disabled', false);
-    if (coowners.length < 1){
-      $('#submit-request-container').hide();
-    }
   }
+  $('#submit-owners').click(function(){
+    if (coowners.length){
+      $('#co-owners').hide("slide", { direction: "left" }, 400, function(){
+        $('#review-type-content').html(claimType.name);
+        $('#review-location-content').html(claimCoords['x1']+', '+claimCoords['z1']+' to '+claimCoords['x2']+', '+claimCoords['z2']);
+        coowners.forEach(function(owner){
+          $('#review-owners-content').append('<li>• '+owner+'</li>');
+        });
+        $('#review').fadeIn(400);
+      })
+    }
+  });
   $('#submit-request').click(function(){
     var count = 0;
     $('#owners').prop('disabled', true);
     coowners.forEach(function(owner){
-      $('#submit-request-container').after('<input type="text" name="coowners['+count+']" value="'+owner+'" style="display:none;">');
+      $('#submit-container').after('<input type="text" name="coowners['+count+']" value="'+owner+'" style="display:none;">');
       count++;
     });
 
-    for (const [key, value] of Object.entries(baseCoords)){
-      $('#submit-request-container').after('<input type="text" name="coords['+key+']" value="'+value+'" style="display:none;">');
+    for (const [key, value] of Object.entries(claimCoords)){
+      $('#submit-container').after('<input type="text" name="coords['+key+']" value="'+value+'" style="display:none;">');
     }
     $('#type, #check-size, #shared').prop('disabled', false);
+    console.log(claimCoords);
     $('#new_claim_request_form').submit();
   });
 </script>

@@ -1,6 +1,10 @@
 <?php
-/*use Illuminate\Support\Facades\Auth;
-$user = Auth::user();*/
+$user = Auth::user();
+$userMaxPerm = DB::table('team_has_users')
+->select('team_id')
+->where('user_id', '=', Auth::id())
+->orderBy('team_id', 'desc')
+->first();
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +13,7 @@ $user = Auth::user();*/
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/css/app.css">
-    <title>ichari</title>
+    <title>{{getenv('APP_NAME')}}</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
@@ -17,7 +21,8 @@ $user = Auth::user();*/
     <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script>
     <!-- Styles -->
     <style>
         /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
@@ -27,10 +32,11 @@ $user = Auth::user();*/
       }
     </style>
   </head>
-  <body class="grid-cols-6 grid">
-
+  <body class="flex min-w-[800px] overflow-y-hidden">
     @include('/modules/sidebar/base')
-
-    @include('/modules/cardholder/base')
+    <div class="w-5/6 h-screen bg-gradient-to-b from-slate-200 to-neutral-200">
+      @include('/modules/header/base')
+      @includeIf("/modules/cardholder/$show")
+    </div>
   </body>
 </html>
