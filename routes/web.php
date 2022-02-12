@@ -7,7 +7,7 @@ use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Http;
 use Symfony\Component\HttpKernel\Controller\ErrorController;
 
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\ClaimRequestController;
 
 /*
@@ -23,7 +23,7 @@ use App\Http\Controllers\ClaimRequestController;
 
 Route::get('/', function () {
     if (Auth::check()){
-        return view('dashboard', ['show' => 'dashboard']);
+        return redirect('/module/dashboard');
     }
     return view('start');
 });
@@ -37,7 +37,7 @@ Route::get('/auth/callback', function(){
     $user = User::where('discord_id', $discordUser->id)->first();
     if ($user){
         Auth::login($user, true);
-        return redirect('/section/dashboard');
+        return redirect('/module/dashboard');
     }
     else {
         
@@ -69,7 +69,7 @@ Route::get('/auth/callback', function(){
                     'discord_avatar' => $discordUser->avatar
                 ]);
                 Auth::login($user, true);
-                return redirect('/section/dashboard');
+                return redirect('/module/dashboard');
             }
             else {
                 abort(401);
@@ -84,5 +84,5 @@ Route::get('/auth/callback', function(){
     
 });
 
-Route::get('/section/{feature}', [DashboardController::class, 'show'])->middleware('auth');
+Route::get('/module/{feature}', [ModuleController::class, 'loadModule'])->middleware('auth');
 Route::post('/forms/{type}', ClaimRequestController::class)->middleware('auth');
