@@ -17,6 +17,7 @@ class Claim extends Model
         'northwest_z',
         'southeast_x',
         'southeast_z',
+        'requested_by',
         'shared'
     ];
 }

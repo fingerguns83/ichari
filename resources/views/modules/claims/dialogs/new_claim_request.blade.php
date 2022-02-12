@@ -175,8 +175,8 @@ use Symfony\Component\Routing\Route;
         coords['z2'] = input_z1;
       }
 
-      var size_x = coords['x2'] - coords['x1'] + 1;
-      var size_z = coords['z2'] - coords['z1'] + 1;
+      var size_x = Math.abs(coords['x2'] - coords['x1']) + 1;
+      var size_z = Math.abs(coords['z2'] - coords['z1']) + 1;
       var output = size_x+' × '+size_z;
 
       if (size_x != claimType.size || size_z != claimType.size){

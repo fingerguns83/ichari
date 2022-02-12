@@ -50,6 +50,6 @@ class ClaimRequestController extends Controller
       }
     }
     
-    return redirect('/section/claims');
+    return redirect('/module/claims');
   }
 }

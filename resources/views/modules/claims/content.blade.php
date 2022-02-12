@@ -6,17 +6,8 @@
     ->where('user_id', '=', Auth::id())
     ->get();
 ?>
-    @if ($userClaims)
-      @foreach ($userClaims as $userClaim)
-        @include('/layouts/card', ['card' => 'claim_card'])
-      @endforeach
-    @endif
-<script>
-  function dialogShow(){
-    $('#dialog').show();
-  }
-  function dialogHide(){
-    $('#dialog').hide();
-    location.reload();
-  }
-</script>
+@if ($userClaims)
+  @foreach ($userClaims as $userClaim)
+    @include('/layouts/items/card', ['card' => 'claim_card'])
+  @endforeach
+@endif
