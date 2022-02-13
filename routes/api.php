@@ -58,33 +58,79 @@ Route::get('/fetch_pending_claims', function(Request $request){
   }
 
   /* Analyze Claim Compliance */
-  // Area Check
+  $analysis = "OK";
+
   $type = DB::table('claim_types')
-    ->select('area_allowed', 'amount_allowed')
-    ->where('id', '=', $claim->type)
-    ->first();
+  ->select('area_allowed', 'amount_allowed', 'buffer')
+  ->where('id', '=', $claim->type)
+  ->first();
+
+  // Area Check
   $areasAllowed = json_decode($type->area_allowed, true);
 
   foreach($areasAllowed as $area){
     if ($claim->northwest_x < $area['x1'] || $claim->northwest_z < $area['z1']){
-      $areaCheck = false;
+      $inArea = false;
     }
-    elseif ($claim->southwest_x > $area['x2'] || $claim->southwest_z > $area['z2']){
-      $areaCheck = false;
+    elseif ($claim->southeast_x > $area['x2'] || $claim->southeast_z > $area['z2']){
+      $inArea = false;
     }
     else {
-      $areaCheck = true;
+      $inArea = true;
       break;
     }
   }
-  // Collision Check
-  $existingClaims = DB::table('claims')
-    ->where('type', '=', $claim->type)
-    ->where('status', '>=', 3)
-    ->get();
-  
-  foreach($existingClaims as $existing){
-    if ($)
+  if (!$inArea){
+    $analysis = "area";
   }
-  //return trim(json_encode($output));
+
+  // Collision Check
+  if(!$analysis){
+    $existingClaims = DB::table('claims')
+      ->where('type', '=', $claim->type)
+      ->where('status', '>=', 4)
+      ->get();
+    
+    foreach($existingClaims as $existing){
+      if ($claim->northwest_x > $existing->southeast_x + $type->buffer || $claim->southeast_x < $existing->northwest_x - $type->buffer){
+        $collision = false;
+      }
+      elseif ($claim->northwest_z > $existing->southeast_z + $type->buffer || $claim->southeast_z < $existing->northwest_z - $type->buffer){
+        $collision = false;
+      }
+      else {
+        $collision = true;
+      }
+
+      if ($collision){
+        $analysis = "collision";
+        break;
+      }
+    }
+  }
+
+  // Holdings Check
+  foreach($ownerIds as $owner){
+    $player = User::where('id', $owner->user_id)->first();
+    $playerClaimIds = DB::table('claim_has_users')
+      ->select('claim_id')
+      ->where('user_id', '=', $player->id)
+      ->get();
+    foreach ($playerClaimIds as $idObj){
+      $playerClaims[] = $idObj->claim_id;
+    }
+    $claimCount = DB::table('claims')
+      ->whereIn('id', $playerClaims)
+      ->where('type', '=', $claim->type)
+      ->where('status', '>=', 1)
+      ->count();
+
+    if ($claimCount >= $type->amount_allowed){
+      $analysis = "Count - " . $player->discord_name;
+    }
+  }
+
+  $output['analysis'] = $analysis;
+
+  return trim(json_encode($output));
 });

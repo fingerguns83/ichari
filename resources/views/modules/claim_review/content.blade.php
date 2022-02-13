@@ -21,7 +21,7 @@
     var url = "/api/fetch_pending_claims?type="+id;
     $.get(url, function(data){
       if (data){
-        console.log(data);
+        var claim = $.parseJson
       }
     });
   }

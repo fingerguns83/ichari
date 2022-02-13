@@ -21,13 +21,13 @@
     <div id="coowners-label" class="font-semibold">Co-Owners: </div>
     <div id="coowners-data" class="ml-2"></div>
   </div>
-  <div class="flex content-center items-center">
+  <div class="flex content-center items-center w-full truncate">
     <div id="analysis-label" class="font-semibold">Analysis: </div>
     <div id="analysis-data" class="ml-2">test</div>
   </div>
   <div id="actions" class="flex justify-evenly mt-12">
-    <button class="w-[120px] px-2 py-1 flex content-center items-center justify-center text-2xl font-medium border-4 border-slate-700 rounded-xl hover:border-red-600" onclick="deny('{{$type->id}}')">Deny</button>
-    <button class="w-[120px] px-2 py-1 flex content-center items-center justify-center text-2xl font-medium border-4 border-slate-700 rounded-xl hover:border-green-600" onclick="approve('{{$type->id}}')">Approve</button>
+    <button class="w-[120px] px-2 py-1 flex content-center items-center justify-center text-2xl font-medium border-4 border-slate-700 rounded-xl hover:border-red-600 active:border-red-700 active:bg-red-300" onclick="deny('{{$type->id}}')">Deny</button>
+    <button class="w-[120px] px-2 py-1 flex content-center items-center justify-center text-2xl font-medium border-4 border-slate-700 rounded-xl hover:border-green-600 active:border-green-700 active:bg-green-300" onclick="approve('{{$type->id}}')">Approve</button>
   </div>
 </div>
 <div id="no-info" style="display:none;" class="flex flex-col justify-center items-center content-center p-6 text-2xl font-bold text-sky-600">
