@@ -21,10 +21,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
   return $request->user();
 });
 Route::get('/fetch_model', ModelFetchController::class);
-Route::get('/fetch_pending_claims', function(Request $request){
+Route::get('/claims/fetch_pending', function(Request $request){
   /* Fetch Oldest Pending Claim */
   $claim = DB::table('claims')
     ->where('type', '=', intval($request->query('type')))
+    ->where('status', '=', 1)
     ->oldest()
     ->first();
   if (!$claim){
@@ -53,12 +54,12 @@ Route::get('/fetch_pending_claims', function(Request $request){
   array_shift($owners);
   if ($claim->shared){
     foreach($owners as $owner){
-      $output['coowners'][] = ['id' => $owner->id, 'name' => $owner->discord_name];
+      $output['coowners'][] = ['id' => $owner->id, 'name' => $owner->discord_name, 'avatar' => $owner->discord_avatar];
     }
   }
 
   /* Analyze Claim Compliance */
-  $analysis = "OK";
+  $analysis = "";
 
   $type = DB::table('claim_types')
   ->select('area_allowed', 'amount_allowed', 'buffer')
@@ -81,7 +82,7 @@ Route::get('/fetch_pending_claims', function(Request $request){
     }
   }
   if (!$inArea){
-    $analysis = "area";
+    $analysis = "Outside Approved Area";
   }
 
   // Collision Check
@@ -103,34 +104,47 @@ Route::get('/fetch_pending_claims', function(Request $request){
       }
 
       if ($collision){
-        $analysis = "collision";
+        $analysis = "Collision";
         break;
       }
     }
   }
 
   // Holdings Check
-  foreach($ownerIds as $owner){
-    $player = User::where('id', $owner->user_id)->first();
-    $playerClaimIds = DB::table('claim_has_users')
-      ->select('claim_id')
-      ->where('user_id', '=', $player->id)
-      ->get();
-    foreach ($playerClaimIds as $idObj){
-      $playerClaims[] = $idObj->claim_id;
-    }
-    $claimCount = DB::table('claims')
-      ->whereIn('id', $playerClaims)
-      ->where('type', '=', $claim->type)
-      ->where('status', '>=', 1)
-      ->count();
+  if(!$analysis){
+    foreach($ownerIds as $owner){
+      $player = User::where('id', $owner->user_id)->first();
+      $playerClaimIds = DB::table('claim_has_users')
+        ->select('claim_id')
+        ->where('user_id', '=', $player->id)
+        ->get();
+      foreach ($playerClaimIds as $idObj){
+        $playerClaims[] = $idObj->claim_id;
+      }
+      $claimCount = DB::table('claims')
+        ->whereIn('id', $playerClaims)
+        ->where('type', '=', $claim->type)
+        ->where('status', '>=', 4)
+        ->count();
 
-    if ($claimCount >= $type->amount_allowed){
-      $analysis = "Count - " . $player->discord_name;
+      if ($claimCount >= $type->amount_allowed){
+        $analysis = "Count - " . $player->discord_name;
+      }
     }
   }
 
   $output['analysis'] = $analysis;
 
   return trim(json_encode($output));
+});
+Route::get('/claims/modify', function(Request $request){
+  $claim = DB::table('claims')
+    ->select('status')
+    ->where('id', '=', $request->query('id'))
+    ->first();
+  if ($claim->status == 1){
+    DB::table('claims')
+      ->where('id', '=', $request->query('id'))
+      ->update(['status' => $request->query('status'), 'reviewed_by' => $request->query('reviewer')]);
+  }
 });

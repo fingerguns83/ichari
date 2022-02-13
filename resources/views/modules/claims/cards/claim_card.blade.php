@@ -16,6 +16,9 @@
       ->where('claim_id', '=', $claim->id)
       ->get();
   }
+  if ($claim->reviewed_by){
+    $reviewer = User::where('id', '=', $claim->reviewed_by)->first();
+  }
 ?>
 <div id="icon" class="flex w-full px-6 mt-6 content-center items-center justify-center">
   <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="6em" height="6em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="<?=$type->icon; ?>" fill="currentColor"/></svg>  
@@ -31,8 +34,14 @@
 <div id="details" class="flex w-full mt-4 content-center items-center justify-center text-xl">
   <div>
     <div id="status" class="flex content-center items-center justify-center">
-      <span>Status: <span class="font-bold" style="color: <?=$status->color; ?>"><?=ucwords($status->name); ?></span></span><br>
+      <span>Status: <span class="font-bold cursor-default" style="color: <?=$status->color; ?>"><?=ucwords($status->name); ?></span></span><br>
     </div>
+    @if ($claim->reviewed_by)
+      <?php $reviewer = User::where('id', '=', $claim->reviewed_by)->first(); ?>
+      <div id="reviewer" class="flex content-center items-center justify-center text-sm">
+        <span>Reviewed By: {{$reviewer->discord_name}}</span>
+      </div>
+    @endif
     @if ($claim->shared)
       <div class="flex content-center items-center justify-center">
         <span class="justify-start">Co-Owner(s): </span>

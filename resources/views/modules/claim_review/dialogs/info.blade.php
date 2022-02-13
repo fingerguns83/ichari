@@ -1,5 +1,5 @@
 <div class="mb-4">
-  Each card represents a claim type that your current permission level allows you to audit.
+  Each card represents a claim type that your current permission level allows you to review.
 </div>
 
 <div class="mb-4">
