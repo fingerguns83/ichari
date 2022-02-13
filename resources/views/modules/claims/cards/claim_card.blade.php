@@ -39,7 +39,7 @@
     @if ($claim->reviewed_by)
       <?php $reviewer = User::where('id', '=', $claim->reviewed_by)->first(); ?>
       <div id="reviewer" class="flex content-center items-center justify-center text-sm">
-        <span>Reviewed By: {{$reviewer->discord_name}}</span>
+        <span>Reviewed By: {{$reviewer->username}}</span>
       </div>
     @endif
     @if ($claim->shared)
@@ -50,7 +50,7 @@
         @foreach ($coowners as $coowner)
           @if ($coowner->user_id !== Auth::id())
             <?php $owner = User::where('id', '=', $coowner->user_id)->first(); ?>
-            <img class="rounded-full mx-1" src="{{$owner->discord_avatar}}" width="32" height="32" title="{{$owner->discord_name}}">
+            <img class="rounded-full mx-1" src="{{$owner->avatar}}" width="32" height="32" title="{{$owner->username}}">
           @endif
         @endforeach
       </div>

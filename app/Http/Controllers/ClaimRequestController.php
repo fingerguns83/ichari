@@ -41,7 +41,7 @@ class ClaimRequestController extends Controller
       ]);
     if ($request->post('shared')){
       foreach($request->post('coowners') as $name){
-        $user = User::where('discord_name', '=', $name)->first();
+        $user = User::where('username', '=', $name)->first();
         DB::table('claim_has_users')
           ->insert([
             'claim_id' => $claimId,

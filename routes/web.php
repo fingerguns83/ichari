@@ -34,7 +34,7 @@ Route::get('/auth/redirect', function(){
 
 Route::get('/auth/callback', function(){
     $discordUser = Socialite::driver('discord')->user();
-    $user = User::where('discord_id', $discordUser->id)->first();
+    $user = User::where('oauth_id', $discordUser->id)->first();
     if ($user){
         Auth::login($user, true);
         return redirect('/module/dashboard');
@@ -63,10 +63,10 @@ Route::get('/auth/callback', function(){
                     $name = $discordUser->name;
                 }
                 $user = User::create([
-                    'discord_id' => $discordUser->id,
-                    'discord_name' => $name,
-                    'discord_unique' => $discordUser->nickname,
-                    'discord_avatar' => $discordUser->avatar
+                    'oauth_id' => $discordUser->id,
+                    'username' => $name,
+                    'oauth_unique' => $discordUser->nickname,
+                    'avatar' => $discordUser->avatar
                 ]);
                 Auth::login($user, true);
                 return redirect('/module/dashboard');

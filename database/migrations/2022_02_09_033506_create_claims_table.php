@@ -16,12 +16,16 @@ class CreateClaimsTable extends Migration
         Schema::create('claims', function (Blueprint $table) {
             $table->id();
             $table->integer('type');
-            $table->string('status');
+            $table->integer('status');
             $table->integer('northwest_x');
             $table->integer('northwest_z');
             $table->integer('southeast_x');
             $table->integer('southeast_z');
             $table->integer('requested_by');
+            $table->integer('shared');
+            $table->integer('reviewed_by');
+
+            $table->timestamps();
         });
     }
 

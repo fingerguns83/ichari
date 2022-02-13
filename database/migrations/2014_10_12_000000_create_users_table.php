@@ -15,10 +15,10 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('discord_id');
-            $table->string('discord_name');
-            $table->string('discord_unique');
-            $table->string('discord_avatar');
+            $table->string('oauth_id');
+            $table->string('username');
+            $table->string('oauth_unique');
+            $table->string('avatar');
             $table->string('timezone')->default('UTC');
             $table->integer('is_admin')->default('0');
             $table->integer('is_banned')->default('0');
@@ -35,6 +35,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        //
     }
 }

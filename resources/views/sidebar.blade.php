@@ -57,9 +57,9 @@ else {
 
   <!--Account-->
   <div class="sticky bottom-0 flex content-center justify-left items-center h-[96px] w-full p-8 bg-sky-800 text-sky-100">
-    <img src="{{$user['discord_avatar']}}" width="60" height="60" class="rounded-full">
+    <img src="{{$user['avatar']}}" width="60" height="60" class="rounded-full">
     <p class="decoration-sky-100 hover:underline hover:cursor-pointer">
-      <span class="font-medium text-xl ml-6"><?=$user['discord_name']; ?></span><br>
+      <span class="font-medium text-xl ml-6"><?=$user['username']; ?></span><br>
       <span class="font-normal text-md ml-6">View Account</span>
     </p>
   </div>

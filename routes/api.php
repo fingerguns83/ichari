@@ -49,12 +49,12 @@ Route::get('/claims/fetch_pending', function(Request $request){
       'z2' => $claim->southeast_z,
     ],
     'shared' => $claim->shared,
-    'requested_by' => ['id' => $owners[0]->id, 'name' => $owners[0]->discord_name]
+    'requested_by' => ['id' => $owners[0]->id, 'name' => $owners[0]->username]
   );
   array_shift($owners);
   if ($claim->shared){
     foreach($owners as $owner){
-      $output['coowners'][] = ['id' => $owner->id, 'name' => $owner->discord_name, 'avatar' => $owner->discord_avatar];
+      $output['coowners'][] = ['id' => $owner->id, 'name' => $owner->username, 'avatar' => $owner->avatar];
     }
   }
 
@@ -128,7 +128,7 @@ Route::get('/claims/fetch_pending', function(Request $request){
         ->count();
 
       if ($claimCount >= $type->amount_allowed){
-        $analysis = "Count - " . $player->discord_name;
+        $analysis = "Count - " . $player->username;
       }
     }
   }

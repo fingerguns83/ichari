@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ClaimHasUser extends Migration
+class CreateTeamsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class ClaimHasUser extends Migration
      */
     public function up()
     {
-        Schema::create('claim_has_users', function (Blueprint $table) {
-            $table->integer('claim_id');
-            $table->integer('user_id');
+        Schema::create('teams', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
         });
     }
 
