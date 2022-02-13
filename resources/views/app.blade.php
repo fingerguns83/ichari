@@ -1,10 +1,5 @@
 <?php
 $user = Auth::user();
-$userMaxPerm = DB::table('team_has_users')
-->select('team_id')
-->where('user_id', '=', Auth::id())
-->orderBy('team_id', 'desc')
-->first();
 ?>
 
 <!DOCTYPE html>

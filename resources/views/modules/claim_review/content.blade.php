@@ -27,7 +27,6 @@
         var selfmod = details.children('#self-mod');
 
         var claim = JSON.parse(data);
-        console.log(claim);
         claimant.html(claim.requested_by.name);
         locationnw.html(claim.location.x1 + ', ' + claim.location.z1);
         locationse.html(claim.location.x2 + ', ' + claim.location.z2);
@@ -82,4 +81,11 @@
       loadNew(section);
     });
   });
+  setInterval(function(){
+    console.log("Reloading requests...");
+    $("[id^=type-]").each(function(){
+      var section = $(this).prop('id').replace('type-', '');
+      loadNew(section);
+    });
+  }, 90000);
 </script>
