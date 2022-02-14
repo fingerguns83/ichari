@@ -29,7 +29,7 @@ $user = Auth::user();
   </head>
   <body class="flex min-w-[800px] overflow-y-hidden">
     @include('/sidebar')
-    <div class="w-5/6 h-screen bg-gradient-to-b from-slate-200 to-neutral-200 dark:from-gray-700 dark:to-slate-700 dark:text-sky-100">
+    <div class="w-5/6 h-screen bg-gradient-to-b from-slate-200 to-neutral-200 dark:from-[#292b30] dark:to-[#292b30] dark:text-sky-100">
       @include('/layouts/header')
       @includeIf("/modules/$name/layout")
     </div>

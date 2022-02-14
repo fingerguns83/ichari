@@ -82,7 +82,7 @@ Route::get('/claims/fetch_pending', function(Request $request){
     }
   }
   if (!$inArea){
-    $analysis = "Outside Approved Area";
+    $analysis = "Outside Area";
   }
 
   // Collision Check

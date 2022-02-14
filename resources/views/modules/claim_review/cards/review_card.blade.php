@@ -1,7 +1,7 @@
 <?php
 
 ?>
-<div id="heading" class="h-16 flex flex-col w-full px-6 justify-center bg-sky-200 border-y-2 border-y-slate-200 rounded-t-2xl">
+<div id="heading" class="h-16 flex flex-col w-full px-6 justify-center bg-sky-200 dark:bg-sky-700 border-b-2 border-y-slate-200 rounded-t-2xl">
   <div class="flex justify-center text-3xl font-semibold">{{$type->name}}</div>
 </div>
 <div id="details" class="flex flex-col m-6 text-xl" style="display:none;">
@@ -33,7 +33,7 @@
     <button id="approve" class="w-[120px] px-2 py-1 flex content-center items-center justify-center text-2xl font-medium border-4 border-slate-700 rounded-xl hover:border-green-600 active:border-green-700 active:bg-green-300">Approve</button>
   </div>
 </div>
-<div id="no-info" class="flex flex-col justify-center items-center content-center p-6 text-2xl font-bold text-sky-600">
+<div id="no-info" class="flex flex-col justify-center items-center content-center p-6 text-2xl font-bold text-sky-600 dark:text-slate-400">
   No claims in queue...
 </div>
 

@@ -2,7 +2,7 @@
 
 ?>
 
-<div id="{{$dialogId}}" class="absolute grid grid-cols-6 w-full h-full z-10 top-0 left-0 bg-sky-900 dark:bg-slate-200 bg-opacity-20 dark:bg-opacity-5" style="display: none;">
+<div id="{{$dialogId}}" class="absolute grid grid-cols-6 w-full h-full z-10 top-0 left-0 bg-sky-900 dark:bg-gray-900 bg-opacity-20 dark:bg-opacity-20" style="display: none;">
   <div class="flex col-start-2 col-span-5 content-center items-center justify-center place-items-center">
     <div class="w-4/5 md:w-3/5 xl:w-5/12 2xl:w-2/5 h-auto px-8 py-4 pb-8 bg-slate-200 dark:bg-slate-700 rounded-3xl text-slate-700 dark:text-slate-200">
       <div class="flex w-full h-16 items-center justify-between pb-4 mb-8 text-3xl font-semibold border-b-2 border-gray-300">
