@@ -23,10 +23,10 @@
       }
     </style>
   </head>
-  <body class="bg-gradient-to-bl to-neutral-100 from-slate-200 h-screen">
+  <body class="bg-gradient-to-bl from-slate-200 to-neutral-200 dark:from-gray-700 dark:to-slate-700 h-screen">
     <div class="flex justify-center items-center h-screen">
-      <div class="bg-neutral-200 text-slate-900 h-1/3 w-1/3 grid grid-cols-3 rounded-3xl border-2 border-neutral-400 shadow-xl">
-        <div class="col-span-1 border-r-neutral-400 border-r-2 flex justify-center text-center items-center">
+      <div class="bg-neutral-200 text-slate-900 h-1/3 min-h-[280px] w-3/4 md:w-1/2 lg:w-2/5 xl:w-1/3 grid grid-cols-3 rounded-3xl border-2 border-neutral-400 shadow-xl">
+        <div class="col-span-1 border-r-neutral-400 border-r-2 h-full flex justify-center text-center items-center">
           <div style="text-align: center;">
             <img src="/images/ichari_blue.png" width="150" height="150"><br>
             <span class="font-semibold text-4xl">iCHARI</span>
@@ -53,6 +53,7 @@
     function auth(){
       window.location.replace("/auth/redirect");
     }
+    console.log(window.matchMedia('(prefers-color-scheme: dark)').matches);
     
   </script>
 </html>

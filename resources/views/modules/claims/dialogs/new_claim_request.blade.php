@@ -16,9 +16,9 @@ use Symfony\Component\Routing\Route;
         $claimTypes[$type->id] = $type->name;
       }
     ?>
-    {{ Form::select('type', $claimTypes) }}
+    {{ Form::select('type', $claimTypes, '', ['class' => 'dark:bg-slate-600']) }}
   </div>
-  {{ Form::button('<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12A10 10 0 0 1 12 2a10 10 0 0 1 10 10m-12 6l6-6l-6-6l-1.4 1.4l4.6 4.6l-4.6 4.6L10 18z" fill="currentColor"/></svg>', ['class' => 'text-sky-600 ml-2', 'id' => 'submit-type']) }}
+  {{ Form::button('<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12A10 10 0 0 1 12 2a10 10 0 0 1 10 10m-12 6l6-6l-6-6l-1.4 1.4l4.6 4.6l-4.6 4.6L10 18z" fill="currentColor"/></svg>', ['class' => 'text-slate-700 hover:text-sky-500 dark:text-slate-200 dark:hover:text-sky-500 ml-2', 'id' => 'submit-type']) }}
 </div>
 
 
@@ -30,25 +30,25 @@ use Symfony\Component\Routing\Route;
       <div class="w-1/2 items-baseline">
         <div id="coords1" class="flex content-center items-center justify-left">
           <span class="mr-2">{{ Form::label('x1', 'X: ') }}</span>
-          {{ Form::number('x1', '0', ['class' => 'w-3/5']) }}
+          {{ Form::number('x1', '0', ['class' => 'w-3/5 dark:bg-slate-600']) }}
           <span class="m-2">{{ Form::label('z1', 'Z: ') }}</span>
-          {{ Form::number('z1', '0', ['class' => 'w-3/5']) }}
+          {{ Form::number('z1', '0', ['class' => 'w-3/5 dark:bg-slate-600']) }}
         </div>
         <div id="coords2" class="flex content-center items-center justify-left" style="display:none;">
           <span class="mr-2">{{ Form::label('x2', 'X: ') }}</span>
-          {{ Form::number('x2', '0', ['class' => 'w-3/5']) }}
+          {{ Form::number('x2', '0', ['class' => 'w-3/5 dark:bg-slate-600']) }}
           <span class="m-2">{{ Form::label('z2', 'Z: ') }}</span>
-          {{ Form::number('z2', '0', ['class' => 'w-3/5']) }}
+          {{ Form::number('z2', '0', ['class' => 'w-3/5 dark:bg-slate-600']) }}
         </div>    
       </div>
       <span id="shared-claim" class="ml-4" style="display:none;">
         <span class="mr-2 text-xl">{{ Form::label('shared', 'Shared claim ')}}</span>
-        {{ Form::checkbox('shared', 'shared', false, ['class' => 'form-checkbox text-sky-600 h-6 w-6']) }}
+        {{ Form::checkbox('shared', 'shared', false, ['class' => 'form-checkbox dark:bg-slate-600 text-sky-500 h-6 w-6']) }}
       </span>
-      {{ Form::button('<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12A10 10 0 0 1 12 2a10 10 0 0 1 10 10m-12 6l6-6l-6-6l-1.4 1.4l4.6 4.6l-4.6 4.6L10 18z" fill="currentColor"/></svg>', ['class' => 'text-sky-600 ml-2', 'id' => 'submit-location']) }}
+      {{ Form::button('<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12A10 10 0 0 1 12 2a10 10 0 0 1 10 10m-12 6l6-6l-6-6l-1.4 1.4l4.6 4.6l-4.6 4.6L10 18z" fill="currentColor"/></svg>', ['class' => 'text-slate-700 hover:text-sky-500 dark:text-slate-200 dark:hover:text-sky-500 ml-2', 'id' => 'submit-location']) }}
     </div>
     <div class="flex content-center justify-start items-center mt-2">
-      {{ Form::button('Check Size', ['class' => 'px-4 border-2 border-slate-700 rounded-xl', 'id' => 'check-size']) }}
+      {{ Form::button('Check Size', ['class' => 'px-4 border-2 border-slate-600 dark:border-slate-200 hover:border-sky-500 active:border-sky-400 hover:bg-sky-100 dark:hover:bg-sky-800 hover:bg-opacity-50 rounded-xl', 'id' => 'check-size']) }}
       <span id="size-output" class="ml-4 text-xl"></span>
       <span id="size-output-error" class="text-xl ml-4 text-red-500"></span>
     </div>
@@ -61,16 +61,16 @@ use Symfony\Component\Routing\Route;
     <span id="owners-label" class="block mr-2">{{ Form:: label('Co-owner(s): ', '')}}</span>
     <?php
       $allUsers = DB::table('users')
-        ->select('id', 'discord_name')
+        ->select('id', 'username')
         ->where('id', '!=', Auth::id())
         ->get();
       $availableUsers = [];
       foreach ($allUsers as $user){
-        $availableUsers[$user->discord_name] = $user->discord_name;
+        $availableUsers[$user->username] = $user->username;
       }
     ?>
-    {{ Form::select('owners', $availableUsers, '', ['id' => 'owners', 'disabled'])}}
-    {{ Form::button('<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12A10 10 0 0 1 12 2a10 10 0 0 1 10 10m-12 6l6-6l-6-6l-1.4 1.4l4.6 4.6l-4.6 4.6L10 18z" fill="currentColor"/></svg>', ['class' => 'text-sky-600 ml-2', 'id' => 'submit-owners']) }}
+    {{ Form::select('owners', $availableUsers, '', ['id' => 'owners', 'class' => 'dark:bg-slate-600', 'disabled'])}}
+    {{ Form::button('<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12A10 10 0 0 1 12 2a10 10 0 0 1 10 10m-12 6l6-6l-6-6l-1.4 1.4l4.6 4.6l-4.6 4.6L10 18z" fill="currentColor"/></svg>', ['class' => 'text-slate-700 hover:text-sky-500 dark:text-slate-200 dark:hover:text-sky-500 ml-2', 'id' => 'submit-owners']) }}
     
   </div>
   <ul id="owners-added" class="mt-2">
@@ -97,7 +97,7 @@ use Symfony\Component\Routing\Route;
     </div>
   </div>
   <div id="submit-container" class="flex content-center justify-center items-center mt-6">
-  {{ Form::button('Submit Request', ['class' => 'px-4 py-2 text-3xl text-slate-200 bg-sky-600 rounded-xl', 'id' => 'submit-request']) }}
+  {{ Form::button('Submit Request', ['class' => 'px-4 py-2 text-3xl text-slate-700 dark:text-slate-200 border-2 border-slate-600 dark:border-slate-200 hover:border-sky-500 active:border-sky-400 hover:bg-sky-200 dark:hover:bg-sky-800 hover:bg-opacity-50 rounded-xl', 'id' => 'submit-request']) }}
   </div>
 </div>
 {{ Form::close() }}
@@ -140,7 +140,7 @@ use Symfony\Component\Routing\Route;
 
   var shared = false;
   var claimCoords = [];
-  function displaySize(outputSize){
+  function displaySize(outputSize = true){
     shared = $('#shared').prop('checked');
 
     if (!shared){

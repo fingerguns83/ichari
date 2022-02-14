@@ -5,6 +5,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpKernel\Controller\ErrorController;
 
 use App\Http\Controllers\ModuleController;
@@ -69,6 +70,7 @@ Route::get('/auth/callback', function(){
                     'avatar' => $discordUser->avatar
                 ]);
                 Auth::login($user, true);
+                DB::table('team_has_users')->insert(['team_id' => 1, 'user_id' => Auth::id()]);
                 return redirect('/module/dashboard');
             }
             else {
