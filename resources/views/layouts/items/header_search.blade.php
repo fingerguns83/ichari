@@ -1,0 +1,1 @@
+{!! Form::text($boxname, '', ['id' => $boxname, 'placeholder' => $placeholder, 'class' => 'flex px-2 py-1 text-2xl content-center items-center font-medium form-input border-2 border-slate-600 dark:border-slate-200 hover:border-sky-500 bg-transparent active:border-sky-400 outline-none rounded-xl']) !!}

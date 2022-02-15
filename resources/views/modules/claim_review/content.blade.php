@@ -1,13 +1,15 @@
 <?php
-  $userMaxPerm = DB::table('team_has_users')
-    ->select('team_id')
-    ->where('user_id', '=', Auth::id())
-    ->orderBy('team_id', 'desc')
-    ->first();
-  $claimTypes = DB::table('claim_types')
+  if ($user->is_admin){
+    $claimTypes = DB::table('claim_types')
     ->select('id', 'name', 'icon')
-    ->where('review_requires_team', '<=', $userMaxPerm->team_id)
     ->get();
+  }
+  else {
+    $claimTypes = DB::table('claim_types')
+    ->select('id', 'name', 'icon')
+    ->where('review_requires_team', '<=', $user->perm_level)
+    ->get();
+  }
 ?>
 @if ($claimTypes)
   @foreach ($claimTypes as $type)

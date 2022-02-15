@@ -1,0 +1,1 @@
+@includeIf('/layouts/items/header_search', ['boxname' => 'user-search', 'placeholder' => 'Search player...'])

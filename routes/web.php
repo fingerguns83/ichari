@@ -37,8 +37,13 @@ Route::get('/auth/callback', function(){
     $discordUser = Socialite::driver('discord')->user();
     $user = User::where('oauth_id', $discordUser->id)->first();
     if ($user){
-        Auth::login($user, true);
-        return redirect('/module/dashboard');
+        if (!$user->is_banned){
+            Auth::login($user, true);
+            return redirect('/module/dashboard');
+        }
+        else {
+            abort(418);
+        }
     }
     else {
         
@@ -70,14 +75,11 @@ Route::get('/auth/callback', function(){
                     'avatar' => $discordUser->avatar
                 ]);
                 Auth::login($user, true);
-                DB::table('team_has_users')->insert(['team_id' => 1, 'user_id' => Auth::id()]);
                 return redirect('/module/dashboard');
             }
             else {
                 abort(401);
             }
-
-
         }
         else {
             abort(403);

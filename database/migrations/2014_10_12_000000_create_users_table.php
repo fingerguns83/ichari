@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('oauth_unique');
             $table->string('avatar');
             $table->string('timezone')->default('UTC');
+            $table->int('perm_level')->default('1');
             $table->integer('is_admin')->default('0');
             $table->integer('is_banned')->default('0');
 

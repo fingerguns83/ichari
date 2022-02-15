@@ -148,3 +148,20 @@ Route::get('/claims/modify', function(Request $request){
       ->update(['status' => $request->query('status'), 'reviewed_by' => $request->query('reviewer')]);
   }
 });
+Route::get('/users/modify', function(Request $request){
+  $modifiable = ['timezone', 'perm_level', 'is_admin', 'is_banned'];
+  $key = $request->query('key');
+  $value = $request->query('value');
+  $user_id = $request->query('user_id');
+
+  if ($request->query('key') == null || $request->query('value') == null || $request->query('user_id') == null){
+    abort(400);
+  }
+  if (!in_array($request->query('key'), $modifiable)){
+    abort(403);
+  }
+
+  DB::table('users')
+    ->where('id', '=', $request->query('user_id'))
+    ->update([$request->query('key') => $request->query('value')]);
+});

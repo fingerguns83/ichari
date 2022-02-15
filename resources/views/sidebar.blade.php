@@ -1,32 +1,19 @@
 <?php
 use Illuminate\Support\Facades\DB;
-$userMaxPerm = DB::table('team_has_users')
-  ->select('team_id')
-  ->where('user_id', '=', Auth::id())
-  ->orderBy('team_id', 'desc')
-  ->first();
-$userIsAdmin = DB::table('team_has_users')
-  ->select('team_id')
-  ->where('user_id', '=', Auth::id())
-  ->where('team_id', '=', 0)
-  ->first();
-
-if ($userIsAdmin){
+if ($user->is_admin){
   $modules = DB::table('modules')
   ->select('name', 'icon')
   ->where('enabled', '=', 1)
-  ->where('requires_team', '<=', $userMaxPerm->team_id)
   ->get();
 }
 else {
   $modules = DB::table('modules')
   ->select('name', 'icon')
   ->where('enabled', '=', 1)
-  ->where('requires_team', '<=', $userMaxPerm->team_id)
-  ->where('requires_team', '>', 0)
+  ->where('requires_perm', '<=', $user->perm_level)
+  ->where('requires_perm', '>', 0)
   ->get();
 }
-
 ?>
 
 <div class="flex flex-col gap-0 content-between w-1/6 min-w-[320px] h-screen bg-sky-600">
