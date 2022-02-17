@@ -8,6 +8,6 @@
 ?>
 @if ($userClaims)
   @foreach ($userClaims as $userClaim)
-    @include('/layouts/items/card', ['card' => 'claim_card'])
+    @include('/layouts/components/card', ['format' => 'claim_card'])
   @endforeach
 @endif

@@ -1,1 +1,1 @@
-@include('/layouts/containers/grid')
+@include('/layouts/containers/list')

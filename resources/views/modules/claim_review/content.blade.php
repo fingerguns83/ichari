@@ -13,7 +13,7 @@
 ?>
 @if ($claimTypes)
   @foreach ($claimTypes as $type)
-    @include('/layouts/items/card', ['card' => 'review_card', 'id' => "type-" . $type->id])
+    @include('/layouts/components/card', ['format' => 'review_card', 'id' => "type-" . $type->id])
   @endforeach
 @endif
 <script>

@@ -5,7 +5,7 @@ $users = DB::table('users')
 ?>
 
 @foreach ($users as $user)
-  @include('/layouts/items/card', ['card' => 'user_card', 'id' => 'user-container'])
+  @include('/layouts/components/list_item', ['format' => 'user_list', 'class' => 'user-container'])
 @endforeach
 
 <script>
@@ -30,19 +30,37 @@ $users = DB::table('users')
       location.reload();
     });
   });
-  /*$('#user-search').keyup(function(){
+  $('#user-search').keyup(function(){
     var search = $(this).val().toLowerCase();
-    if (search){
-      $('#user-container').children("[id*="+search+"]").each(function(){
-        $(this).show();
-      });
-      $('#user-container > div').not("[id*="+search+"]").each(function(){
-        $(this).parent().hide();
-      });
-      
+    if (search !== ""){
+      if (search[0] == "@"){
+        var tagsearch = search.substring(1);
+
+        $("[id*=perm-select-").each(function(){
+          if ($(this).find(':selected').text().toLowerCase().includes(tagsearch)){
+            $(this).parents('.user-container').show();
+          }
+          else {
+            $(this).parents('.user-container').hide();
+          }
+        });
+        /*$('.user-container > div').not("[id*="+search+"]").each(function(){
+          $(this).parent().hide();
+        });*/
+      }
+      else {
+        $("[id*="+search+"]").each(function(){
+          $(this).parent().show();
+        });
+        $('.user-container > div').not("[id*="+search+"]").each(function(){
+          $(this).parent().hide();
+        });
+      }
     }
     else {
-      $('#user-container > div').show();
+      $('.user-container').each(function(){
+        $(this).show();
+      });
     }
-  });*/
+  });
 </script>
