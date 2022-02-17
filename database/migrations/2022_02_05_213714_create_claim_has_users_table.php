@@ -12,7 +12,7 @@ class CreateClaimHasUsersTable extends Migration
      * @return void
      */
     public function up()
-    {
+    {  
         Schema::create('claim_has_users', function (Blueprint $table) {
             $table->integer('claim_id');
             $table->integer('user_id');

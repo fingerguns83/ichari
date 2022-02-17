@@ -4,7 +4,7 @@ use Collective\Html\FormFacade;
 use Symfony\Component\Routing\Route;
 ?>
 
-  {{ Form::open(['url' => '/forms/claim_request', 'name' => 'new_claim_request', 'id' => 'new_claim_request_form']) }}
+  {{ Form::open(['url' => '/forms/claim-request', 'name' => 'new_claim_request', 'id' => 'new_claim_request_form']) }}
 
 <!--type-->
 <div class="flex content-evenly items-center justify-left" id="claim-type">

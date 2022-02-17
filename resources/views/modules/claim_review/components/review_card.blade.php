@@ -29,8 +29,8 @@
     You cannot review your own claim.
   </div>
   <div id="actions" class="flex justify-evenly mt-12">
-    <button id="deny" class="w-[120px] px-2 py-1 flex content-center items-center justify-center text-2xl font-medium border-4 border-slate-700 rounded-xl hover:border-red-600 active:border-red-700 active:bg-red-300">Deny</button>
-    <button id="approve" class="w-[120px] px-2 py-1 flex content-center items-center justify-center text-2xl font-medium border-4 border-slate-700 rounded-xl hover:border-green-600 active:border-green-700 active:bg-green-300">Approve</button>
+    <button id="deny" class="w-[120px] px-2 py-1 flex content-center items-center justify-center text-2xl font-medium border-4 border-slate-700 dark:border-slate-200 rounded-xl hover:border-red-600 active:border-red-700 active:bg-red-300">Deny</button>
+    <button id="approve" class="w-[120px] px-2 py-1 flex content-center items-center justify-center text-2xl font-medium border-4 border-slate-700 dark:border-slate-200 rounded-xl hover:border-green-600 active:border-green-700 active:bg-green-300">Approve</button>
   </div>
 </div>
 <div id="no-info" class="flex flex-col justify-center items-center content-center p-6 text-2xl font-bold text-sky-600 dark:text-slate-400">

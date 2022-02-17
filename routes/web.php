@@ -89,4 +89,4 @@ Route::get('/auth/callback', function(){
 });
 
 Route::get('/module/{feature}', [ModuleController::class, 'loadModule'])->middleware('auth');
-Route::post('/forms/{type}', ClaimRequestController::class)->middleware('auth');
+Route::post('/forms/claim-request', ClaimRequestController::class)->middleware('auth');

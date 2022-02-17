@@ -137,15 +137,17 @@ Route::get('/claims/fetch_pending', function(Request $request){
 
   return trim(json_encode($output));
 });
-Route::get('/claims/modify', function(Request $request){
-  $claim = DB::table('claims')
-    ->select('status')
-    ->where('id', '=', $request->query('id'))
-    ->first();
-  if ($claim->status == 1){
-    DB::table('claims')
+Route::get('/claims/modify/{intent}', function(Request $request, $intent){
+  if ($intent == 'review'){
+    $claim = DB::table('claims')
+      ->select('status')
       ->where('id', '=', $request->query('id'))
-      ->update(['status' => $request->query('status'), 'reviewed_by' => $request->query('reviewer')]);
+      ->first();
+    if ($claim->status == 1){
+      DB::table('claims')
+        ->where('id', '=', $request->query('id'))
+        ->update(['status' => $request->query('status'), 'reviewed_by' => $request->query('reviewer')]);
+    }
   }
 });
 Route::get('/users/modify', function(Request $request){

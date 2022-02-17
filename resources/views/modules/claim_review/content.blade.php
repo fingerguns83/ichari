@@ -20,9 +20,9 @@
   function loadNew(section){
     var url = "/api/claims/fetch_pending?type="+section;
     $.get(url, function(data){
-      if (data){
         var details = $('#type-'+section).find('#details');
         var empty = $('#type-'+section).find('#no-info');
+      if (data){
         var claimant = details.children('#claimant').children('#claimant-data');
         var locationnw = details.children('#coords-nw').children('#nw-data');
         var locationse = details.children('#coords-se').children('#se-data');
@@ -69,18 +69,24 @@
         details.show();
         empty.hide();
       }
+      else {
+        details.hide();
+        empty.show();
+      }
     });
   }
   function approve(claim_id, section){
-    var url = "/api/claims/modify?status=4&id="+claim_id+"&reviewer={{Auth::id()}}";
+    var url = "/api/claims/modify/review?status=4&id="+claim_id+"&reviewer={{Auth::id()}}";
     console.log(url);
     $.get(url, function(){
       loadNew(section);
     });
   }
   function deny(claim_id, section){
-    var url = "/api/claims/modify?status=2&id="+claim_id+"&reviewer={{Auth::id()}}";
-    console.log(url);
+    var url = "/api/claims/modify/review?status=2&id="+claim_id+"&reviewer={{Auth::id()}}";
+    $.get(url, function(){
+      loadNew(section);
+    });
   }
   $(document).ready(function(){
     $("[id^=type-]").each(function(){
