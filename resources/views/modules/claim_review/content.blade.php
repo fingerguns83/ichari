@@ -55,10 +55,10 @@
           analysis.html('OK');
         }
 
-        if (claim.requested_by.id == {{Auth::id()}}){
+        /*if (claim.requested_by.id == {{Auth::id()}}){
           actions.hide();
           selfmod.show();
-        }
+        }*/
 
         denyButton.click(function(){
           deny(claim.id, section);

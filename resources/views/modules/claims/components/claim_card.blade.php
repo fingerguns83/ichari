@@ -7,7 +7,6 @@
     ->where('id', '=', $claim->type)
     ->first();
   $status = DB::table('claim_statuses')
-    ->select('name', 'color')
     ->where('id', '=', $claim->status)
     ->first();
   if ($claim->shared){
@@ -19,6 +18,13 @@
   if ($claim->reviewed_by){
     $reviewer = User::where('id', '=', $claim->reviewed_by)->first();
   }
+  if ($claim->expires_on){
+    $expires_on = date('F dS', strtotime($claim->expires_on));
+  }
+  else {
+    $expires_on = false;
+  }
+  $renewClaim = "";
 ?>
 <div id="icon" class="flex w-full px-6 mt-6 content-center items-center justify-center">
   <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="6em" height="6em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="<?=$type->icon; ?>" fill="currentColor"/></svg>  
@@ -34,7 +40,11 @@
 <div id="details" class="flex w-full mt-4 content-center items-center justify-center text-xl">
   <div>
     <div id="status" class="flex content-center items-center justify-center">
-      <span>Status: <span class="font-bold cursor-default" style="color: <?=$status->color; ?>"><?=ucwords($status->name); ?></span></span><br>
+      <span>Status: 
+        <span class="font-bold cursor-default" style="color: {{$status->color}}" {{$renewClaim}}>
+          <?=ucwords($status->name); ?>
+        </span>
+      </span>
     </div>
     @if ($claim->reviewed_by)
       <?php $reviewer = User::where('id', '=', $claim->reviewed_by)->first(); ?>
@@ -42,17 +52,23 @@
         <span>Reviewed By: {{$reviewer->username}}</span>
       </div>
     @endif
-    @if ($claim->shared)
-      <div class="flex content-center items-center justify-center">
-        <span class="justify-start">Co-Owner(s): </span>
+    @if ($expires_on)
+      <div id="expiring" class="flex content-center items-center justify-center">
+        <span>Expires: <span class="text-base">{{$expires_on}}</span></span>
       </div>
+    @endif
+    @if ($claim->shared)
       <div class="flex content-center items-center justify-center mt-2">
-        @foreach ($coowners as $coowner)
-          @if ($coowner->user_id !== Auth::id())
-            <?php $owner = User::where('id', '=', $coowner->user_id)->first(); ?>
-            <img class="rounded-full mx-1" src="{{$owner->avatar}}" width="32" height="32" title="{{$owner->username}}">
-          @endif
-        @endforeach
+        <span class="justify-start">Co-Owner(s): </span>
+      <!--</div>-->
+        <div class="flex content-center items-center justify-center ml-2">
+          @foreach ($coowners as $coowner)
+            @if ($coowner->user_id !== Auth::id())
+              <?php $owner = User::where('id', '=', $coowner->user_id)->first(); ?>
+              <img class="rounded-full mx-0.5" src="{{$owner->avatar}}" width="32" height="32" title="{{$owner->username}}">
+            @endif
+          @endforeach
+        </div>
       </div>
     @endif
   </div>
