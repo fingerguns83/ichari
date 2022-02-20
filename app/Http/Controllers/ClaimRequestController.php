@@ -25,15 +25,6 @@ class ClaimRequestController extends Controller
       abort(418);
     }
 
-    $expires_on = null;
-    $type = DB::table('claim_types')
-              ->where('id', '=', $request->post('type'))
-              ->first();
-    if ($type->expire_time){
-      $expires_on = date('Y-m-d H:i:s', time() + $type->expire_time);
-    }
-    
-
     $newClaim = Claim::create([
         'type' => $request->post('type'),
         'status' => 1,
@@ -42,8 +33,7 @@ class ClaimRequestController extends Controller
         'southeast_x'=> $request->post('coords')['x2'],
         'southeast_z'=> $request->post('coords')['z2'],
         'requested_by' => Auth::id(),
-        'shared' => boolval($request->post('shared')),
-        'expires_on' => $expires_on
+        'shared' => boolval($request->post('shared'))
       ]);
     $claimId = $newClaim->id;
     DB::table('claim_has_users')
@@ -60,7 +50,7 @@ class ClaimRequestController extends Controller
             'claim_id' => $claimId,
             'user_id' => $user->id
           ]);
-        $user->notify(new ClaimStatusChanged($newClaim));
+        $user->notify(new ClaimStatusChanged($newClaim, $user));
       }
     }
 

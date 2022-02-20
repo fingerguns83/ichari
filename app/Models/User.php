@@ -24,7 +24,8 @@ class User extends Authenticatable
         'avatar',
         'timezone',
         'is_admin',
-        'is_banned'
+        'is_banned',
+        'rss_key'
     ];
 
     /**

@@ -140,21 +140,30 @@ Route::get('/claims/fetch_pending', function(Request $request){
 Route::get('/claims/modify/{intent}', function(Request $request, $intent){
   if ($intent == 'review'){
     $claim = DB::table('claims')
-      ->select('status')
+      ->select('status', 'type')
       ->where('id', '=', $request->query('id'))
       ->first();
+    
+    $expires_on = null;
+    if ($request->query('status') == 4){
+      $type = DB::table('claim_types')
+        ->where('id', '=', $claim->type)
+        ->first();
+      if ($type->expire_time){
+        $expires_on = date('Y-m-d H:i:s', time() + $type->expire_time);
+      }
+    }
+
     if ($claim->status == 1){
       DB::table('claims')
         ->where('id', '=', $request->query('id'))
-        ->update(['status' => $request->query('status'), 'reviewed_by' => $request->query('reviewer')]);
+        ->update(['status' => $request->query('status'), 'reviewed_by' => $request->query('reviewer'), 'expires_on' => $expires_on]);
     }
   }
 });
 Route::get('/users/modify', function(Request $request){
   $modifiable = ['timezone', 'perm_level', 'is_admin', 'is_banned'];
-  $key = $request->query('key');
-  $value = $request->query('value');
-  $user_id = $request->query('user_id');
+
 
   if ($request->query('key') == null || $request->query('value') == null || $request->query('user_id') == null){
     abort(400);
@@ -165,5 +174,5 @@ Route::get('/users/modify', function(Request $request){
 
   DB::table('users')
     ->where('id', '=', $request->query('user_id'))
-    ->update([$request->query('key') => $request->query('value')]);
+    ->update([$request->query('key') => urldecode($request->query('value'))]);
 });

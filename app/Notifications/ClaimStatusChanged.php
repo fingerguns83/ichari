@@ -6,20 +6,23 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\DB;
 
 class ClaimStatusChanged extends Notification
 {
     use Queueable;
 
     protected $claim;
+    protected $recipient;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($claim)
+    public function __construct($claim, $recipient)
     {
+        $this->recipient = $recipient;
         $this->claim = $claim;
     }
 
@@ -62,15 +65,40 @@ class ClaimStatusChanged extends Notification
         else {
             $title = 'New Claim Created';
         }
+        if ($this->claim->requested_by !== $this->recipient->id){
+            $requestedByUser = DB::table('users')
+                ->select('username')
+                ->where('id', '=', $this->claim->requested_by)
+                ->first();
+            $requestedBy = $requestedByUser->username;
+        }
+
+        $claimType = DB::table('claim_types')
+            ->select('name')
+            ->where('id', '=', $this->claim->type)
+            ->first();
+
+
+        $message = "The " . $claimType->name . " located at " . $this->claim->getLocationString() . " ";
+
+        if ($requestedBy){
+            $message .= "that was requested by " . $requestedBy . " ";
+        }
+
+        $message .= "has had its status changed to " . strtoupper($this->claim->getStatusString()) . ".";
+        if ($this->claim->expires_on){
+            $userTimezone = new \DateTimeZone($this->recipient->timezone);
+            $expireServer = new \DateTime($this->claim->expires_on);
+            $expireServer->setTimezone($userTimezone);
+            $expires_on = $expireServer->format('F dS');
+            $message .= " This claim will expire on " . $expires_on . ".";
+        }
+
         $output = [
             'title' => $title,
-            'claim_type' => $this->claim->type,
-            'claim_location' => $this->claim->getLocationString(),
-            'claim_status' => $this->claim->getStatusString()
+            'message' => $message
         ];
-        if ($this->claim->expires_on){
-            $output['expires_on'] = $this->claim->expires_on;
-        }
+
         return $output;
     }
 }

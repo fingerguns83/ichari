@@ -19,7 +19,10 @@
     $reviewer = User::where('id', '=', $claim->reviewed_by)->first();
   }
   if ($claim->expires_on){
-    $expires_on = date('F dS', strtotime($claim->expires_on));
+    $userTimezone = new DateTimeZone($user->timezone);
+    $expireServer = new DateTime($claim->expires_on);
+    $expireServer->setTimezone($userTimezone);
+    $expires_on = $expireServer->format('F dS');
   }
   else {
     $expires_on = false;

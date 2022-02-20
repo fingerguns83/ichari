@@ -532,6 +532,7 @@ class ComposerStaticInit1c18c034aa71d292960a4cb77ba477fb
     );
 
     public static $classMap = array (
+        'App\\Console\\Commands\\EvaluateClaimStatus' => __DIR__ . '/../..' . '/app/Console/Commands/EvaluateClaimStatus.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\ClaimRequestController' => __DIR__ . '/../..' . '/app/Http/Controllers/ClaimRequestController.php',
@@ -549,7 +550,7 @@ class ComposerStaticInit1c18c034aa71d292960a4cb77ba477fb
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Models\\Claim' => __DIR__ . '/../..' . '/app/Models/Claim.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
-        'App\\Notifications\\ClaimReviewed' => __DIR__ . '/../..' . '/app/Notifications/ClaimReviewed.php',
+        'App\\Notifications\\ClaimStatusChanged' => __DIR__ . '/../..' . '/app/Notifications/ClaimStatusChanged.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',

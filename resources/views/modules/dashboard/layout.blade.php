@@ -1,1 +1,1 @@
-@include('/layouts/containers/lanes', ['tabs' => ['announcements, notifications, upcoming']]);
+@include('/layouts/containers/lanes', ['tabs' => ['announcements, notifications, upcoming']])

@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Console\\Commands\\EvaluateClaimStatus' => $baseDir . '/app/Console/Commands/EvaluateClaimStatus.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\ClaimRequestController' => $baseDir . '/app/Http/Controllers/ClaimRequestController.php',
@@ -23,7 +24,7 @@ return array(
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Models\\Claim' => $baseDir . '/app/Models/Claim.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
-    'App\\Notifications\\ClaimReviewed' => $baseDir . '/app/Notifications/ClaimReviewed.php',
+    'App\\Notifications\\ClaimStatusChanged' => $baseDir . '/app/Notifications/ClaimStatusChanged.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',

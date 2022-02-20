@@ -23,9 +23,10 @@ class CreateClaimsTable extends Migration
             $table->integer('southeast_z');
             $table->integer('requested_by');
             $table->integer('shared');
-            $table->integer('reviewed_by');
-
-            $table->timestamps();
+            $table->integer('reviewed_by')->nullable();
+            $table->timestamp('expires_on')->nullable();
+            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 

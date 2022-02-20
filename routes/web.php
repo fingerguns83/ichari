@@ -10,6 +10,7 @@ use Symfony\Component\HttpKernel\Controller\ErrorController;
 
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\ClaimRequestController;
+use Illuminate\Notifications\Notification;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,11 +69,19 @@ Route::get('/auth/callback', function(){
                 else {
                     $name = $discordUser->name;
                 }
+
+                $rssKeyPool = '2346789bBcCdDfFgGhHjJkKmMpPqQrRtTvVwWxXyY';
+                $rssKey = '';
+                for ($i = 0; $i < 8; $i++){
+                    $rssKey .= substr($rssKeyPool, rand(0, strlen($rssKeyPool) -1), 1);
+                }
+
                 $user = User::create([
                     'oauth_id' => $discordUser->id,
                     'username' => $name,
                     'oauth_unique' => $discordUser->nickname,
-                    'avatar' => $discordUser->avatar
+                    'avatar' => $discordUser->avatar,
+                    'rss_key' => $rssKey
                 ]);
                 Auth::login($user, true);
                 return redirect('/module/dashboard');
@@ -90,3 +99,37 @@ Route::get('/auth/callback', function(){
 
 Route::get('/module/{feature}', [ModuleController::class, 'loadModule'])->middleware('auth');
 Route::post('/forms/claim-request', ClaimRequestController::class)->middleware('auth');
+
+Route::get('/notifications/{notifID}', function($notifID){
+    $userInfo = explode('-', $notifID);
+
+    $user = DB::table('users')
+        ->where('username', '=', $userInfo[0])
+        ->first();
+    if ($user->rss_key !== $userInfo[1]){
+        abort(403);
+    }
+    $notifications = DB::table('notifications')
+        ->where('notifiable_id', '=', $user->id)
+        ->get();
+
+
+    header("Content-type: text/xml");
+    echo "<?xml version='1.0' encoding='UTF-8'?>
+    <rss version='2.0'>
+    <channel>
+    ";
+    echo "<title>".getenv('APP_NAME')."</title>" . PHP_EOL;
+    echo "<link>".getenv('APP_URL')."</link>" . PHP_EOL;
+    foreach($notifications as $notif){
+        
+        $data = json_decode($notif->data, true);
+        echo "<item>" . PHP_EOL;
+        echo "<title>" . $data['title'] . "</title>" . PHP_EOL;
+        echo "<description>" . $data['message'] . "</description>" . PHP_EOL;
+        echo "</item>" . PHP_EOL;
+    }
+    echo "</channel>" . PHP_EOL;
+    echo "</rss>";
+
+});
