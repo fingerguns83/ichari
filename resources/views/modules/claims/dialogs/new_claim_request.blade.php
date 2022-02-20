@@ -11,7 +11,9 @@ use Symfony\Component\Routing\Route;
   <div>
     <span class="mr-2">{{ Form::label('type', 'Claim Type:') }}</span>
     <?php
-      $claimTypesDB = DB::table('claim_types')->get();
+      $claimTypesDB = DB::table('claim_types')
+        ->where('id', '>', 0)
+        ->get();
       foreach ($claimTypesDB as $type){
         $claimTypes[$type->id] = $type->name;
       }
@@ -288,7 +290,6 @@ use Symfony\Component\Routing\Route;
       $('#submit-container').after('<input type="text" name="coords['+key+']" value="'+value+'" style="display:none;">');
     }
     $('#type, #check-size, #shared').prop('disabled', false);
-    console.log(claimCoords);
     $('#new_claim_request_form').submit();
   });
 </script>

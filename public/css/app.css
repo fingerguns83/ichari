@@ -689,6 +689,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .-mt-2\.5 {
   margin-top: -0.625rem;
 }
+.mb-\[50px\] {
+  margin-bottom: 50px;
+}
 .block {
   display: block;
 }
@@ -908,6 +911,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 .gap-2 {
   gap: 0.5rem;
 }
+.gap-4 {
+  gap: 1rem;
+}
+.gap-8 {
+  gap: 2rem;
+}
 .overflow-hidden {
   overflow: hidden;
 }
@@ -1112,6 +1121,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .p-6 {
   padding: 1.5rem;
 }
+.p-12 {
+  padding: 3rem;
+}
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -1167,6 +1179,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
+}
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 .pt-8 {
   padding-top: 2rem;
@@ -1492,8 +1508,21 @@ Ensure the default browser behavior of the `hidden` attribute.
     background-color: rgb(31 41 55 / var(--tw-bg-opacity));
   }
 
+  .dark\:bg-slate-800 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(30 41 59 / var(--tw-bg-opacity));
+  }
+
   .dark\:bg-opacity-20 {
     --tw-bg-opacity: 0.2;
+  }
+
+  .dark\:bg-opacity-30 {
+    --tw-bg-opacity: 0.3;
+  }
+
+  .dark\:bg-opacity-25 {
+    --tw-bg-opacity: 0.25;
   }
 
   .dark\:from-gray-700 {

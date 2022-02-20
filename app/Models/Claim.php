@@ -14,16 +14,14 @@ class Claim extends Model
         'id',
         'type',
         'status',
-        'northwest_x',
-        'northwest_z',
-        'southeast_x',
-        'southeast_z',
+        'boundary',
         'requested_by',
         'shared',
         'expires_on'
     ];
     public function getLocationString(){
-        $output = $this->northwest_x . ', ' . $this->northwest_z . ' to ' . $this->southeast_x . ', ' . $this->southeast_z;
+        $coords = json_decode($this->boundary, true);
+        $output = $coords['x1'] . ', ' . $coords['z1'] . ' to ' . $coords['x2'] . ', ' . $coords['z2'];
         return $output;
     }
     public function getStatusString(){

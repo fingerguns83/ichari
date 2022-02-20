@@ -81,7 +81,7 @@ class ClaimStatusChanged extends Notification
 
         $message = "The " . $claimType->name . " located at " . $this->claim->getLocationString() . " ";
 
-        if ($requestedBy){
+        if (isset($requestedBy)){
             $message .= "that was requested by " . $requestedBy . " ";
         }
 

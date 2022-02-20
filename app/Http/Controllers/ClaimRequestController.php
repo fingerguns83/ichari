@@ -25,13 +25,12 @@ class ClaimRequestController extends Controller
       abort(418);
     }
 
+    $coords = trim(json_encode($request->post('coords')));
+
     $newClaim = Claim::create([
         'type' => $request->post('type'),
         'status' => 1,
-        'northwest_x' => $request->post('coords')['x1'],
-        'northwest_z'=> $request->post('coords')['z1'],
-        'southeast_x'=> $request->post('coords')['x2'],
-        'southeast_z'=> $request->post('coords')['z2'],
+        'boundary' => $coords,
         'requested_by' => Auth::id(),
         'shared' => boolval($request->post('shared'))
       ]);

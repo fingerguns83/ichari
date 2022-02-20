@@ -1,14 +1,15 @@
 <?php
   use App\Models\User;
   use App\Models\Claim;
+  use App\Models\ClaimType;
+
   $claim = Claim::where('id', '=', $userClaim->claim_id)->first();
-  $type = DB::table('claim_types')
-    ->select('name', 'icon')
-    ->where('id', '=', $claim->type)
-    ->first();
+  $type = ClaimType::where('id', '=', $claim->type)->first();
+
   $status = DB::table('claim_statuses')
     ->where('id', '=', $claim->status)
     ->first();
+
   if ($claim->shared){
     $coowners = DB::table('claim_has_users')
       ->select('user_id')
@@ -27,18 +28,16 @@
   else {
     $expires_on = false;
   }
-  $renewClaim = "";
+
+  $renewClaim = 'onclick=""';
+
 ?>
 <div id="icon" class="flex w-full px-6 mt-6 content-center items-center justify-center">
-  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="6em" height="6em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="<?=$type->icon; ?>" fill="currentColor"/></svg>  
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="6em" height="6em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="{{$type->icon}}" fill="currentColor" onclick="alert('Claim ID: {{$claim->id}}')"/></svg>  
 </div>
 <div id="type" class="flex flex-col w-full px-6 justify-center bg-sky-200 dark:bg-sky-700 border-y-2 border-y-slate-200">
   <span class="block w-full font-medium text-2xl text-center"><?=$type->name; ?></span>
-  <span class="block w-full font-medium text-center">
-    <?php
-      printf('(%s, %s to %s, %s)', $claim->northwest_x, $claim->northwest_z, $claim->southeast_x, $claim->southeast_z);
-    ?>
-  </span>
+  <span class="block w-full font-medium text-center">({{$claim->getLocationString()}})</span>
 </div>
 <div id="details" class="flex w-full mt-4 content-center items-center justify-center text-xl">
   <div>

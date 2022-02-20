@@ -8,7 +8,7 @@ foreach ($perms as $perm){
 }
 
 ?>
-<div id="{{$user->username}}" class="w-full grid grid-cols-12">
+<div id="{{strtolower($user->username)}}" class="w-full grid grid-cols-12">
   <div class="flex col-span-5 content-center items-center">
     <img class="rounded-full border dark:border-slate-200" src="{{$user->avatar}}" width="32">
     <span class="ml-2 text-2xl font-semibold">{{$user->username}}</span>

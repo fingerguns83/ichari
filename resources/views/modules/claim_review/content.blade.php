@@ -2,12 +2,14 @@
   if ($user->is_admin){
     $claimTypes = DB::table('claim_types')
     ->select('id', 'name', 'icon')
+    ->where('id', '>', 0)
     ->get();
   }
   else {
     $claimTypes = DB::table('claim_types')
     ->select('id', 'name', 'icon')
     ->where('review_requires_team', '<=', $user->perm_level)
+    ->where('id', '>', 0)
     ->get();
   }
 ?>
@@ -77,7 +79,6 @@
   }
   function approve(claim_id, section){
     var url = "/api/claims/modify/review?status=4&id="+claim_id+"&reviewer={{Auth::id()}}";
-    console.log(url);
     $.get(url, function(){
       loadNew(section);
     });
