@@ -150,8 +150,8 @@ use Symfony\Component\Routing\Route;
       var chunkSubtract = -Math.round(-(claimType.size/2));
     }
     else {
-      var chunkAdd = Math.round((claimType.alternate_size/2));
-      var chunkSubtract = -Math.round(-(claimType.alternate_size/2));
+      var chunkAdd = Math.round((claimType.shared_size/2));
+      var chunkSubtract = -Math.round(-(claimType.shared_size/2));
     }
 
     if (claimType.prompt_id == 1){

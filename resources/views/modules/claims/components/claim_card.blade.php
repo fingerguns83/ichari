@@ -29,7 +29,8 @@
     $expires_on = false;
   }
 
-  $renewClaim = 'onclick=""';
+  //$renewClaim = 'onclick=""';
+  $renewClaim = '';
 
 ?>
 <div id="icon" class="flex w-full px-6 mt-6 content-center items-center justify-center">

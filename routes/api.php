@@ -131,25 +131,30 @@ Route::get('/claims/fetch_pending', function(Request $request){
   // Area Collision Check
   if(!$analysis){
     $areas = DB::table('areas')
-      ->where('dimension', '=', $claim->dimension)
+      ->where('dimension', '=', $type->dimension)
       ->get();
     
     foreach($areas as $area){
-      $areaBounds = json_decode($area->boundaries, true);
-      foreach($areaBounds as $areaBoundary){
-        if ($claimBoundary['x1'] > $areaBoundary['x2'] + $type->buffer || $claimBoundary['x2'] < $areaBoundary['x1'] - $type->buffer){
-          $collision = false;
-        }
-        elseif ($claimBoundary['z1'] > $areaBoundary['z2'] + $type->buffer || $claimBoundary['z2'] < $areaBoundary['z1'] - $type->buffer){
-          $collision = false;
-        }
-        else {
-          $collision = true;
-          break;
+      if (!$area->boundaries){
+        $collision = false;
+      }
+      else{
+        $areaBounds = json_decode($area->boundaries, true);
+        foreach($areaBounds as $areaBoundary){
+          if ($claimBoundary['x1'] > $areaBoundary['x2'] + $type->buffer || $claimBoundary['x2'] < $areaBoundary['x1'] - $type->buffer){
+            $collision = false;
+          }
+          elseif ($claimBoundary['z1'] > $areaBoundary['z2'] + $type->buffer || $claimBoundary['z2'] < $areaBoundary['z1'] - $type->buffer){
+            $collision = false;
+          }
+          else {
+            $collision = true;
+            break;
+          }
         }
       }
       if ($collision){
-        $analysis = "Claim Collision";
+        $analysis = "Area Collision";
         break;
       }
     }
