@@ -11,6 +11,10 @@
 <span>Timezone: </span>
 {!! Form::select('timezone', $timezones, $user->timezone, ['id' => 'user-timezone', 'class' => 'w-3/5 dark:bg-slate-600 ml-2 truncate']) !!}
 </div>
+<div class="w-full flex content-center items-center justify-between mt-4">
+  <span>RSS Notification Feed:</span>
+  <span id="rss-url" class="text-lg ml-2 hover:cursor-pointer" onclick='copyRSSToClipboard()'>/notifications/{{$user->username}}-{{$user->rss_key}}</span>
+</div>
 
 
 <script>
@@ -23,4 +27,11 @@ $('#user-timezone').change(function(){
     element.css({'color': '', 'font-style': ''});
   });
 });
+function copyRSSToClipboard(){
+  var base = "{{getenv('APP_URL')}}";
+  var url = base + $('#rss-url').text();
+  navigator.clipboard.writeText(url);
+  alert("Copied text to clipboard: " + url);
+
+}
 </script>
