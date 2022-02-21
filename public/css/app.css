@@ -1193,6 +1193,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .pb-4 {
   padding-bottom: 1rem;
 }
+.pt-12 {
+  padding-top: 3rem;
+}
 .text-center {
   text-align: center;
 }

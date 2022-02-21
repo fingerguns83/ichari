@@ -27,6 +27,45 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/fetch_model', ModelFetchController::class);
 Route::get('/claims/fetch_pending', function(Request $request){
 
+  /* Create functions */
+    /**
+   * compareBounds
+   *
+   * @param  array $new
+   * @param  array $existing
+   * @param  string $mode
+   * @param  integer $buffer
+   * @return void
+   */
+  function compareBounds($new, $existing, $mode = "contain", $buffer = 0){
+    if ($mode == "contain"){
+      if ($new['x1'] < $existing['x1'] - $buffer || $new['z1'] < $existing['z1'] - $buffer){
+        return false;
+      }
+      elseif ($new['x2'] > $existing['x2'] + $buffer || $new['z2'] > $existing['z2'] + $buffer){
+        return false;
+      }
+      else {
+        return true;
+      }
+    }
+    elseif ($mode == "collide"){
+      if ($new['x1'] > $existing['x2'] + $buffer || $new['x2'] < $existing['x1'] - $buffer){
+        return false;
+      }
+      elseif ($new['z1'] > $existing['z2'] + $buffer || $new['z2'] < $existing['z1'] - $buffer){
+        return false;
+      }
+      else {
+        return true;
+      }
+    }
+    else {
+      return null;
+    }
+  }
+
+
   /* Fetch Oldest Pending Claim */
   $claim = Claim::where('type', '=', intval($request->query('type')))->where('status', '=', 1)->oldest()->first();
   if (!$claim){
@@ -87,15 +126,9 @@ Route::get('/claims/fetch_pending', function(Request $request){
       ->where('id', '=', $type->dimension)
       ->first();
     $dimensionBounds = json_decode($dimension->boundary, true);
-    if ($claimBoundary['x1'] < $dimensionBounds['x1'] || $claimBoundary['z1'] < $dimensionBounds['z1']){
-      $inArea = false;
-    }
-    elseif ($claimBoundary['x2'] > $dimensionBounds['x2'] || $claimBoundary['z2'] > $dimensionBounds['z2']){
-      $inArea = false;
-    }
-    else {
-      $inArea = true;
-    }
+
+    $inArea = compareBounds($claimBoundary, $dimensionBounds);
+
   }
    
   if (!$inArea){
@@ -111,16 +144,7 @@ Route::get('/claims/fetch_pending', function(Request $request){
     
     foreach($existingClaims as $existing){
       $existingBoundary = json_decode($existing->boundary, true);
-      if ($claimBoundary['x1'] > $existingBoundary['x2'] + $type->buffer || $claimBoundary['x2'] < $existingBoundary['x1'] - $type->buffer){
-        $collision = false;
-      }
-      elseif ($claimBoundary['z1'] > $existingBoundary['z2'] + $type->buffer || $claimBoundary['z2'] < $existingBoundary['z1'] - $type->buffer){
-        $collision = false;
-      }
-      else {
-        $collision = true;
-      }
-
+      $collision = compareBounds($claimBoundary, $existingBoundary, "collide", $type->buffer);
       if ($collision){
         $analysis = "Claim Collision";
         break;
@@ -141,14 +165,8 @@ Route::get('/claims/fetch_pending', function(Request $request){
       else{
         $areaBounds = json_decode($area->boundaries, true);
         foreach($areaBounds as $areaBoundary){
-          if ($claimBoundary['x1'] > $areaBoundary['x2'] + $type->buffer || $claimBoundary['x2'] < $areaBoundary['x1'] - $type->buffer){
-            $collision = false;
-          }
-          elseif ($claimBoundary['z1'] > $areaBoundary['z2'] + $type->buffer || $claimBoundary['z2'] < $areaBoundary['z1'] - $type->buffer){
-            $collision = false;
-          }
-          else {
-            $collision = true;
+          $collision = compareBounds($claimBoundary, $areaBoundary, "collide", $type->buffer);
+          if ($collision){
             break;
           }
         }
