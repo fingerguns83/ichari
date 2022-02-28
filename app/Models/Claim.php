@@ -14,11 +14,20 @@ class Claim extends Model
         'id',
         'type',
         'status',
+        'nickname',
         'boundary',
         'requested_by',
         'shared',
         'expires_on'
     ];
+    public function getTypeString(){
+        $type = DB::table('claim_types')->where('id', '=', $this->type)->first();
+        return $type->name;
+    }
+    public function getTypeIcon(){
+        $type = DB::table('claim_types')->where('id', '=', $this->type)->first();
+        return $type->icon;
+    }
     public function getLocationString(){
         $coords = json_decode($this->boundary, true);
         $output = $coords['x1'] . ', ' . $coords['z1'] . ' to ' . $coords['x2'] . ', ' . $coords['z2'];

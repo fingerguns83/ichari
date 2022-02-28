@@ -13,12 +13,23 @@ class Area extends Model
         'id',
         'name',
         'dimension',
-        'location',
+        'boundaries',
         'created_at',
         'created_by',
         'updated_at',
         'modified_by'
     ];
 
-
+    function getLocationString($opener = '', $closer = '', $implode = false, $separator = ''){
+        $boundariesArr = json_decode($this->boundaries, true);
+        $output = [];
+        foreach((array) $boundariesArr as $boundary){
+            $string = $opener . $boundary['x1'] . ', ' . $boundary['z1'] . ' to ' . $boundary['x2'] . ', ' . $boundary['z2'] . $closer;
+            $output[] = $string;
+        }
+        if ($implode){
+            $output = implode($separator, $output);
+        }
+        return $output;
+    }
 }

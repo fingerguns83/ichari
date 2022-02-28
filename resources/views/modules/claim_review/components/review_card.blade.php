@@ -7,15 +7,15 @@
 <div id="details" class="flex flex-col m-6 text-xl" style="display:none;">
   <div id="claimant" class="flex content-center items-center">
     <div id="claimant-label" class="font-semibold">Requested By: </div>
-    <div id="claimant-data" class="ml-2">test</div>
+    <div id="claimant-data" class="ml-2"></div>
   </div>
   <div id="coords-nw" class="flex content-center items-center">
     <div id="nw-label" class="font-semibold">Northwest Corner: </div>
-    <div id="nw-data" class="ml-2">-7152, -1658</div>
+    <div id="nw-data" class="ml-2"></div>
   </div>
   <div id="coords-se" class="flex content-center items-center">
     <div id="se-label" class="font-semibold">Southeast Corner: </div>
-    <div id="se-data" class="ml-2">-7487, -3190</div>
+    <div id="se-data" class="ml-2"></div>
   </div>
   <div id="coowners" class="flex content-center items-center">
     <div id="coowners-label" class="font-semibold">Co-Owners: </div>
@@ -23,7 +23,7 @@
   </div>
   <div id="analysis" class="flex content-center items-center w-full truncate">
     <div id="analysis-label" class="font-semibold">Analysis: </div>
-    <div id="analysis-data" class="ml-2">test</div>
+    <div id="analysis-data" class="ml-2"></div>
   </div>
   <div id="self-mod" class="flex content-center items-center text-center mt-12 font-semibold" style="display:none;">
     You cannot review your own claim.
