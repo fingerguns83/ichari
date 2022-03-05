@@ -13,7 +13,7 @@
     </svg>
   </div>
   <div id="{{$sectionName}}-details" class="flex-col bg-sky-300 dark:bg-slate-700 pt-6 rounded-b-2xl" style="display:none;">
-    <div class="w-full max-h-[200px] overflow-y-scroll scrollbar-hide">
+    <div class="w-full max-h-[240px] overflow-y-scroll scrollbar-hide">
       @includeIf("/modules/land_management/components/$sectionName-dropdown")
     </div>
   </div>

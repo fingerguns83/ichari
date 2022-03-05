@@ -10,6 +10,7 @@ use Symfony\Component\HttpKernel\Controller\ErrorController;
 
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\ClaimRequestController;
+use App\Http\Controllers\LandManagementController;
 use Illuminate\Notifications\Notification;
 
 /*
@@ -101,18 +102,13 @@ Route::get('/module/{feature}', [ModuleController::class, 'loadModule'])->middle
 Route::post('/forms/claim-request', ClaimRequestController::class)->middleware('auth');
 
 Route::get('/notifications/{notifID}', function($notifID){
+
     $userInfo = explode('-', $notifID);
 
-    $user = DB::table('users')
-        ->where('username', '=', $userInfo[0])
-        ->first();
+    $user = User::where('username', '=', $userInfo[0])->first();
     if ($user->rss_key !== $userInfo[1]){
         abort(403);
     }
-    $notifications = DB::table('notifications')
-        ->where('notifiable_id', '=', $user->id)
-        ->get();
-
 
     header("Content-type: text/xml");
     echo "<?xml version='1.0' encoding='UTF-8'?>
@@ -121,15 +117,21 @@ Route::get('/notifications/{notifID}', function($notifID){
     ";
     echo "<title>".getenv('APP_NAME')."</title>" . PHP_EOL;
     echo "<link>".getenv('APP_URL')."</link>" . PHP_EOL;
-    foreach($notifications as $notif){
-        
-        $data = json_decode($notif->data, true);
+    foreach ($user->notifications as $notif){
         echo "<item>" . PHP_EOL;
-        echo "<title>" . $data['title'] . "</title>" . PHP_EOL;
-        echo "<description>" . $data['message'] . "</description>" . PHP_EOL;
+        echo "<title>" . $notif->data['title'] . "</title>" . PHP_EOL;
+        echo "<description>" . $notif->data['message'] . "</description>" . PHP_EOL;
         echo "</item>" . PHP_EOL;
+        if (!$notif->read_at){
+            $notif->markAsRead();
+        }
     }
     echo "</channel>" . PHP_EOL;
     echo "</rss>";
 
+});
+
+Route::controller(LandManagementController::class)->group(function(){
+    Route::post('/forms/land-management/add/{type}', 'add')->middleware('auth');
+    Route::post('/forms/land-management/modify/{type}', 'modify')->middleware('auth');
 });

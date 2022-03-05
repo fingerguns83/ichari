@@ -135,10 +135,26 @@ Route::get('/claims/fetch_pending', function(Request $request){
     $analysis = "Outside Area";
   }
 
+  // Administrative Collision Check
+  if(!$analysis){
+    $existingClaims = DB::table('claims')
+      ->where('type', 0)
+      ->get();
+    
+    foreach($existingClaims as $existing){
+      $existingBoundary = json_decode($existing->boundary, true);
+      $collision = compareBounds($claimBoundary, $existingBoundary, "collide", $type->buffer);
+      if ($collision){
+        $analysis = "Admin Collision";
+        break;
+      }
+    }
+  }
+
   // Claim Collision Check
   if(!$analysis){
     $existingClaims = DB::table('claims')
-      ->where('type', '=', $claim->type)
+      ->where('type', $claim->type)
       ->where('status', '>=', 4)
       ->get();
     

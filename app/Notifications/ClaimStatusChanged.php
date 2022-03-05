@@ -7,6 +7,8 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use App\Models\ClaimType;
 
 class ClaimStatusChanged extends Notification
 {
@@ -66,17 +68,11 @@ class ClaimStatusChanged extends Notification
             $title = 'New Claim Created';
         }
         if ($this->claim->requested_by !== $this->recipient->id){
-            $requestedByUser = DB::table('users')
-                ->select('username')
-                ->where('id', '=', $this->claim->requested_by)
-                ->first();
+            $requestedByUser = User::where('id', $this->claim->requested_by)->first();
             $requestedBy = $requestedByUser->username;
         }
 
-        $claimType = DB::table('claim_types')
-            ->select('name')
-            ->where('id', '=', $this->claim->type)
-            ->first();
+        $claimType = ClaimType::where('id', $this->claim->type)->first();
 
 
         $message = "The " . $claimType->name . " located at " . $this->claim->getLocationString() . " ";

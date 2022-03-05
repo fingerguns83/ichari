@@ -1,7 +1,6 @@
 <?php
-$users = DB::table('users')
-  ->select('id', 'username', 'avatar', 'perm_level', 'is_admin', 'is_banned')
-  ->get();
+use App\Models\User;
+$users = User::all();
 ?>
 
 @foreach ($users as $user)

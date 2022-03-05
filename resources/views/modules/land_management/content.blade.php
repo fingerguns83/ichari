@@ -11,7 +11,6 @@ $sections = ['dimensions', 'areas', 'claim_types', 'claims'];
     var sections = ['dimensions', 'areas', 'claim_types', 'claims'];
     var selected = $(this).attr('id').replace('-expand', '');
     var other = sections.filter(section => section !== selected);
-    console.log(other);
     other.forEach(function(section){
       $('#'+section+'-details').hide();
       $('#'+section+'-expand').find('g').attr('transform', 'rotate(0 12 12)');
@@ -32,8 +31,16 @@ $sections = ['dimensions', 'areas', 'claim_types', 'claims'];
 </script>
 <script>
   $('[id^=add-').click(function(){
-    var sectionID = '#' + $(this).attr('id').replace('add-', '').slice(0, -1);
-    $(sectionID).show();
+    var sectionID = $(this).attr('id').replace('add-', '').slice(0, -1);
+    var sectionTitle = sectionID.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()});
+    $('#addLand #dialog-title').html('Add '+sectionTitle);
+    $('#'+sectionID).show();
     $('#addLand').show();
+  });
+  $('[id^=view-').click(function(){
+    console.log($(this).attr('id'));
+  });
+  $('[id^=edit-').click(function(){
+    console.log($(this).attr('id'));
   });
 </script>
