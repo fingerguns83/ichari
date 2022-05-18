@@ -2,18 +2,27 @@
 
 
 
+### Material Symbols
+* Number of icons: 7702
+* Author: Google
+* URL: https://github.com/google/material-design-icons
+* License: Apache 2.0
+* License URL: https://github.com/google/material-design-icons/blob/master/LICENSE
+* Palette: Colorless
+
+
 ### Google Material Icons
-* Number of icons: 10705
+* Number of icons: 10945
 * Author: Material Design Authors
 * URL: https://github.com/material-icons/material-icons
 * License: Apache 2.0
 * License URL: https://github.com/material-icons/material-icons/blob/master/LICENSE
-* Version: 1.0.25
+* Version: 1.0.28
 * Palette: Colorless
 
 
 ### Material Design Icons
-* Number of icons: 6689
+* Number of icons: 6938
 * Author: Austin Andrews
 * URL: https://github.com/Templarian/MaterialDesign
 * License: Apache 2.0
@@ -42,11 +51,11 @@
 
 
 ### Carbon
-* Number of icons: 1765
+* Number of icons: 1782
 * Author: IBM
 * URL: https://github.com/carbon-design-system/carbon/tree/main/packages/icons
 * License: Apache 2.0
-* Version: 10.47.0
+* Version: 11.2.0
 * Palette: Colorless
 
 
@@ -56,17 +65,17 @@
 * URL: https://github.com/twbs/icons
 * License: MIT
 * License URL: https://github.com/twbs/icons/blob/main/LICENSE.md
-* Version: 1.8.1
+* Version: 1.8.2
 * Palette: Colorless
 
 
 ### Tabler Icons
-* Number of icons: 1536
+* Number of icons: 1978
 * Author: Paweł Kuna
 * URL: https://github.com/tabler/tabler-icons
 * License: MIT
 * License URL: https://github.com/tabler/tabler-icons/blob/master/LICENSE
-* Version: 1.54.0
+* Version: 1.68.0
 * Palette: Colorless
 
 
@@ -101,7 +110,7 @@
 
 
 ### Clarity
-* Number of icons: 1099
+* Number of icons: 1103
 * Author: VMware
 * URL: https://github.com/vmware/clarity
 * License: MIT
@@ -110,12 +119,12 @@
 
 
 ### Iconoir
-* Number of icons: 1007
+* Number of icons: 1091
 * Author: Luca Burgio
 * URL: https://github.com/lucaburgio/iconoir
 * License: MIT
 * License URL: https://github.com/lucaburgio/iconoir/blob/master/LICENSE
-* Version: 4.6.0
+* Version: 4.9.1
 * Palette: Colorless
 
 
@@ -150,22 +159,22 @@
 
 
 ### BoxIcons
-* Number of icons: 783
+* Number of icons: 797
 * Author: Atisa
 * URL: https://github.com/atisawd/boxicons
 * License: CC BY 4.0
 * License URL: https://creativecommons.org/licenses/by/4.0/
-* Version: 2.1.1
+* Version: 2.1.2
 * Palette: Colorless
 
 
 ### BoxIcons Solid
-* Number of icons: 646
+* Number of icons: 650
 * Author: Atisa
 * URL: https://github.com/atisawd/boxicons
 * License: CC BY 4.0
 * License URL: https://creativecommons.org/licenses/by/4.0/
-* Version: 2.1.1
+* Version: 2.1.2
 * Palette: Colorless
 
 
@@ -190,7 +199,7 @@
 
 
 ### Lucide
-* Number of icons: 571
+* Number of icons: 611
 * Author: Lucide Contributors
 * URL: https://github.com/lucide-icons/lucide
 * License: ISC
@@ -228,12 +237,12 @@
 
 
 ### Akar Icons
-* Number of icons: 393
+* Number of icons: 398
 * Author: Arturo Wibawa
 * URL: https://github.com/artcoholic/akar-icons
 * License: MIT
 * License URL: https://github.com/artcoholic/akar-icons/blob/master/LICENSE
-* Version: 1.9.10
+* Version: 1.9.17
 * Palette: Colorless
 
 
@@ -253,17 +262,17 @@
 * URL: https://github.com/modulz/radix-icons
 * License: MIT
 * License URL: https://github.com/radix-ui/icons/blob/master/LICENSE
-* Version: 1.1.0
+* Version: 1.1.1
 * Palette: Colorless
 
 
 ### Element Plus
-* Number of icons: 281
+* Number of icons: 283
 * Author: Element Plus
 * URL: https://github.com/element-plus/element-plus-icons
 * License: MIT
 * License URL: https://github.com/element-plus/element-plus-icons/blob/main/packages/svg/package.json
-* Version: 1.0.0
+* Version: 1.1.4
 * Palette: Colorless
 
 
@@ -297,12 +306,12 @@
 
 
 ### Material Line Icons
-* Number of icons: 250
+* Number of icons: 254
 * Author: Vjacheslav Trushkin
 * URL: https://github.com/cyberalien/line-md
 * License: MIT
 * License URL: https://github.com/cyberalien/line-md/blob/master/license.txt
-* Version: 0.1.0
+* Version: 0.2.0
 * Palette: Colorless
 
 
@@ -351,7 +360,7 @@
 * URL: https://github.com/uiwjs/icons
 * License: MIT
 * License URL: https://github.com/uiwjs/icons/blob/master/LICENSE
-* Version: 2.6.6
+* Version: 2.6.7
 * Palette: Colorless
 
 
@@ -386,7 +395,7 @@
 
 
 ### Maki
-* Number of icons: 205
+* Number of icons: 207
 * Author: Mapbox
 * URL: https://github.com/mapbox/maki
 * License: CC0
@@ -434,12 +443,12 @@
 
 
 ### Fluent UI System Icons
-* Number of icons: 10826
+* Number of icons: 11378
 * Author: Microsoft Corporation
 * URL: https://github.com/microsoft/fluentui-system-icons
 * License: MIT
 * License URL: https://github.com/microsoft/fluentui-system-icons/blob/master/LICENSE
-* Version: 1.1.162
+* Version: 1.1.169
 * Palette: Colorless
 
 
@@ -449,7 +458,27 @@
 * URL: https://github.com/bytedance/IconPark
 * License: Apache 2.0
 * License URL: https://github.com/bytedance/IconPark/blob/master/LICENSE
-* Version: 1.0.0
+* Version: 1.3.5
+* Palette: Colorless
+
+
+### IconPark Solid
+* Number of icons: 1786
+* Author: ByteDance
+* URL: https://github.com/bytedance/IconPark
+* License: Apache 2.0
+* License URL: https://github.com/bytedance/IconPark/blob/master/LICENSE
+* Version: 1.3.5
+* Palette: Colorless
+
+
+### IconPark TwoTone
+* Number of icons: 1767
+* Author: ByteDance
+* URL: https://github.com/bytedance/IconPark
+* License: Apache 2.0
+* License URL: https://github.com/bytedance/IconPark/blob/master/LICENSE
+* Version: 1.3.5
 * Palette: Colorless
 
 
@@ -459,17 +488,17 @@
 * URL: https://github.com/bytedance/IconPark
 * License: Apache 2.0
 * License URL: https://github.com/bytedance/IconPark/blob/master/LICENSE
-* Version: 1.0.0
+* Version: 1.3.5
 * Palette: Colorful
 
 
 ### VSCode Icons
-* Number of icons: 1110
+* Number of icons: 1123
 * Author: Roberto Huertas
 * URL: https://github.com/vscode-icons/vscode-icons
 * License: MIT
 * License URL: https://github.com/vscode-icons/vscode-icons/blob/master/LICENSE
-* Version: 11.10.0
+* Version: 11.11.0
 * Palette: Colorful
 
 
@@ -483,22 +512,22 @@
 
 
 ### Codicons
-* Number of icons: 408
+* Number of icons: 411
 * Author: Microsoft Corporation
 * URL: https://github.com/microsoft/vscode-codicons
 * License: CC BY 4.0
 * License URL: https://github.com/microsoft/vscode-codicons/blob/main/LICENSE
-* Version: 0.0.28
+* Version: 0.0.30
 * Palette: Colorless
 
 
 ### Pepicons
-* Number of icons: 316
+* Number of icons: 410
 * Author: CyCraft
 * URL: https://github.com/CyCraft/pepicons
 * License: CC BY 4.0
 * License URL: https://github.com/CyCraft/pepicons/blob/dev/LICENSE
-* Version: 1.0.12
+* Version: 1.1.0
 * Palette: Colorless
 
 
@@ -523,32 +552,32 @@
 
 
 ### Font Awesome Solid
-* Number of icons: 1128
+* Number of icons: 1387
 * Author: Dave Gandy
 * URL: https://github.com/FortAwesome/Font-Awesome
 * License: CC BY 4.0
 * License URL: https://creativecommons.org/licenses/by/4.0/
-* Version: 6.0.0
+* Version: 6.1.1
 * Palette: Colorless
 
 
 ### Font Awesome Regular
-* Number of icons: 161
+* Number of icons: 162
 * Author: Dave Gandy
 * URL: https://github.com/FortAwesome/Font-Awesome
 * License: CC BY 4.0
 * License URL: https://creativecommons.org/licenses/by/4.0/
-* Version: 6.0.0
+* Version: 6.1.1
 * Palette: Colorless
 
 
 ### Octicons
-* Number of icons: 490
+* Number of icons: 499
 * Author: GitHub
 * URL: https://github.com/primer/octicons/
-* License: Open Font License
+* License: MIT
 * License URL: https://github.com/primer/octicons/blob/main/LICENSE
-* Version: 17.0.0
+* Version: 17.2.0
 * Palette: Colorless
 
 
@@ -558,7 +587,7 @@
 * URL: https://github.com/wikimedia/oojs-ui
 * License: MIT
 * License URL: https://github.com/wikimedia/oojs-ui/blob/master/LICENSE-MIT
-* Version: 0.43.0
+* Version: 0.44.0
 * Palette: Colorless
 
 
@@ -573,7 +602,7 @@
 
 
 ### OpenMoji
-* Number of icons: 3944
+* Number of icons: 4027
 * Author: OpenMoji
 * URL: https://github.com/hfg-gmuend/openmoji
 * License: CC BY-SA 4.0
@@ -582,7 +611,7 @@
 
 
 ### Twitter Emoji
-* Number of icons: 3556
+* Number of icons: 3668
 * Author: Twitter
 * URL: https://github.com/twitter/twemoji
 * License: CC BY 4.0
@@ -649,17 +678,17 @@
 
 
 ### BoxIcons Logo
-* Number of icons: 149
+* Number of icons: 153
 * Author: Atisa
 * URL: https://github.com/atisawd/boxicons
 * License: CC BY 4.0
 * License URL: https://creativecommons.org/licenses/by/4.0/
-* Version: 2.1.1
+* Version: 2.1.2
 * Palette: Colorless
 
 
 ### SVG Logos
-* Number of icons: 1401
+* Number of icons: 1438
 * Author: Gil Barbara
 * URL: https://github.com/gilbarbara/logos
 * License: CC0
@@ -668,12 +697,12 @@
 
 
 ### Simple Icons
-* Number of icons: 2181
+* Number of icons: 2246
 * Author: Simple Icons Collaborators
 * URL: https://github.com/simple-icons/simple-icons
 * License: CC0 1.0
 * License URL: https://github.com/simple-icons/simple-icons/blob/develop/LICENSE.md
-* Version: 6.12.0
+* Version: 6.21.0
 * Palette: Colorless
 
 
@@ -688,17 +717,17 @@
 
 
 ### Font Awesome Brands
-* Number of icons: 459
+* Number of icons: 462
 * Author: Dave Gandy
 * URL: https://github.com/FortAwesome/Font-Awesome
 * License: CC BY 4.0
 * License URL: https://creativecommons.org/licenses/by/4.0/
-* Version: 6.0.0
+* Version: 6.1.1
 * Palette: Colorless
 
 
 ### Arcticons
-* Number of icons: 3777
+* Number of icons: 4238
 * Author: Donno
 * URL: https://github.com/Donno/Arcticons
 * License: CC BY-SA 4.0
@@ -749,12 +778,12 @@
 * URL: https://github.com/lipis/flag-icons
 * License: MIT
 * License URL: https://github.com/lipis/flag-icons/blob/main/LICENSE
-* Version: 6.1.1
+* Version: 6.3.0
 * Palette: Colorful
 
 
 ### Circle Flags
-* Number of icons: 296
+* Number of icons: 373
 * Author: HatScripts
 * URL: https://github.com/HatScripts/circle-flags
 * License: MIT
@@ -823,12 +852,12 @@
 
 
 ### Academicons
-* Number of icons: 147
+* Number of icons: 149
 * Author: James Walsh
 * URL: https://github.com/jpswalsh/academicons
 * License: Open Font License
 * License URL: https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
-* Version: 1.9.1
+* Version: 1.9.2
 * Palette: Colorless
 
 

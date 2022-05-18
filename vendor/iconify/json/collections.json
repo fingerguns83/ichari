@@ -1,8 +1,29 @@
 {
+	"material-symbols": {
+		"name": "Material Symbols",
+		"total": 7702,
+		"author": {
+			"name": "Google",
+			"url": "https://github.com/google/material-design-icons"
+		},
+		"license": {
+			"title": "Apache 2.0",
+			"spdx": "Apache-2.0",
+			"url": "https://github.com/google/material-design-icons/blob/master/LICENSE"
+		},
+		"samples": [
+			"downloading",
+			"privacy-tip",
+			"filter-drama-outline"
+		],
+		"height": 24,
+		"category": "General",
+		"palette": false
+	},
 	"ic": {
 		"name": "Google Material Icons",
-		"total": 10705,
-		"version": "1.0.25",
+		"total": 10945,
+		"version": "1.0.28",
 		"author": {
 			"name": "Material Design Authors",
 			"url": "https://github.com/material-icons/material-icons"
@@ -23,7 +44,7 @@
 	},
 	"mdi": {
 		"name": "Material Design Icons",
-		"total": 6689,
+		"total": 6938,
 		"author": {
 			"name": "Austin Andrews",
 			"url": "https://github.com/Templarian/MaterialDesign"
@@ -88,8 +109,8 @@
 	},
 	"carbon": {
 		"name": "Carbon",
-		"total": 1765,
-		"version": "10.47.0",
+		"total": 1782,
+		"version": "11.2.0",
 		"author": {
 			"name": "IBM",
 			"url": "https://github.com/carbon-design-system/carbon/tree/main/packages/icons"
@@ -111,7 +132,7 @@
 	"bi": {
 		"name": "Bootstrap Icons",
 		"total": 1668,
-		"version": "1.8.1",
+		"version": "1.8.2",
 		"author": {
 			"name": "The Bootstrap Authors",
 			"url": "https://github.com/twbs/icons"
@@ -132,8 +153,8 @@
 	},
 	"tabler": {
 		"name": "Tabler Icons",
-		"total": 1536,
-		"version": "1.54.0",
+		"total": 1978,
+		"version": "1.68.0",
 		"author": {
 			"name": "Paweł Kuna",
 			"url": "https://github.com/tabler/tabler-icons"
@@ -221,7 +242,7 @@
 	},
 	"clarity": {
 		"name": "Clarity",
-		"total": 1099,
+		"total": 1103,
 		"author": {
 			"name": "VMware",
 			"url": "https://github.com/vmware/clarity"
@@ -243,8 +264,8 @@
 	},
 	"iconoir": {
 		"name": "Iconoir",
-		"total": 1007,
-		"version": "4.6.0",
+		"total": 1091,
+		"version": "4.9.1",
 		"author": {
 			"name": "Luca Burgio",
 			"url": "https://github.com/lucaburgio/iconoir"
@@ -331,8 +352,8 @@
 	},
 	"bx": {
 		"name": "BoxIcons",
-		"total": 783,
-		"version": "2.1.1",
+		"total": 797,
+		"version": "2.1.2",
 		"author": {
 			"name": "Atisa",
 			"url": "https://github.com/atisawd/boxicons"
@@ -353,8 +374,8 @@
 	},
 	"bxs": {
 		"name": "BoxIcons Solid",
-		"total": 646,
-		"version": "2.1.1",
+		"total": 650,
+		"version": "2.1.2",
 		"author": {
 			"name": "Atisa",
 			"url": "https://github.com/atisawd/boxicons"
@@ -420,7 +441,7 @@
 	},
 	"lucide": {
 		"name": "Lucide",
-		"total": 571,
+		"total": 611,
 		"author": {
 			"name": "Lucide Contributors",
 			"url": "https://github.com/lucide-icons/lucide"
@@ -506,8 +527,8 @@
 	},
 	"akar-icons": {
 		"name": "Akar Icons",
-		"total": 393,
-		"version": "1.9.10",
+		"total": 398,
+		"version": "1.9.17",
 		"author": {
 			"name": "Arturo Wibawa",
 			"url": "https://github.com/artcoholic/akar-icons"
@@ -551,7 +572,7 @@
 	"radix-icons": {
 		"name": "Radix Icons",
 		"total": 318,
-		"version": "1.1.0",
+		"version": "1.1.1",
 		"author": {
 			"name": "Modulz",
 			"url": "https://github.com/modulz/radix-icons"
@@ -572,8 +593,8 @@
 	},
 	"ep": {
 		"name": "Element Plus",
-		"total": 281,
-		"version": "1.0.0",
+		"total": 283,
+		"version": "1.1.4",
 		"author": {
 			"name": "Element Plus",
 			"url": "https://github.com/element-plus/element-plus-icons"
@@ -660,8 +681,8 @@
 	},
 	"line-md": {
 		"name": "Material Line Icons",
-		"total": 250,
-		"version": "0.1.0",
+		"total": 254,
+		"version": "0.2.0",
 		"author": {
 			"name": "Vjacheslav Trushkin",
 			"url": "https://github.com/cyberalien/line-md"
@@ -770,7 +791,7 @@
 	"uiw": {
 		"name": "uiw icons",
 		"total": 214,
-		"version": "2.6.6",
+		"version": "2.6.7",
 		"author": {
 			"name": "liwen0526",
 			"url": "https://github.com/uiwjs/icons"
@@ -857,7 +878,7 @@
 	},
 	"maki": {
 		"name": "Maki",
-		"total": 205,
+		"total": 207,
 		"version": "7.1.0",
 		"author": {
 			"name": "Mapbox",
@@ -967,8 +988,8 @@
 	},
 	"fluent": {
 		"name": "Fluent UI System Icons",
-		"total": 10826,
-		"version": "1.1.162",
+		"total": 11378,
+		"version": "1.1.169",
 		"author": {
 			"name": "Microsoft Corporation",
 			"url": "https://github.com/microsoft/fluentui-system-icons"
@@ -990,7 +1011,7 @@
 	"icon-park-outline": {
 		"name": "IconPark Outline",
 		"total": 2437,
-		"version": "1.0.0",
+		"version": "1.3.5",
 		"author": {
 			"name": "ByteDance",
 			"url": "https://github.com/bytedance/IconPark"
@@ -1001,9 +1022,53 @@
 			"url": "https://github.com/bytedance/IconPark/blob/master/LICENSE"
 		},
 		"samples": [
-			"add-user",
+			"add-one",
 			"english-mustache",
-			"wind-turbine"
+			"basketball-clothes"
+		],
+		"height": 24,
+		"category": "General",
+		"palette": false
+	},
+	"icon-park-solid": {
+		"name": "IconPark Solid",
+		"total": 1786,
+		"version": "1.3.5",
+		"author": {
+			"name": "ByteDance",
+			"url": "https://github.com/bytedance/IconPark"
+		},
+		"license": {
+			"title": "Apache 2.0",
+			"spdx": "Apache-2.0",
+			"url": "https://github.com/bytedance/IconPark/blob/master/LICENSE"
+		},
+		"samples": [
+			"add-one",
+			"english-mustache",
+			"basketball-clothes"
+		],
+		"height": 24,
+		"category": "General",
+		"palette": false
+	},
+	"icon-park-twotone": {
+		"name": "IconPark TwoTone",
+		"total": 1767,
+		"version": "1.3.5",
+		"author": {
+			"name": "ByteDance",
+			"url": "https://github.com/bytedance/IconPark"
+		},
+		"license": {
+			"title": "Apache 2.0",
+			"spdx": "Apache-2.0",
+			"url": "https://github.com/bytedance/IconPark/blob/master/LICENSE"
+		},
+		"samples": [
+			"add-one",
+			"english-mustache",
+			"basketball-clothes"
 		],
 		"height": 24,
 		"category": "General",
@@ -1012,7 +1077,7 @@
 	"icon-park": {
 		"name": "IconPark",
 		"total": 2437,
-		"version": "1.0.0",
+		"version": "1.3.5",
 		"author": {
 			"name": "ByteDance",
 			"url": "https://github.com/bytedance/IconPark"
@@ -1033,8 +1098,8 @@
 	},
 	"vscode-icons": {
 		"name": "VSCode Icons",
-		"total": 1110,
-		"version": "11.10.0",
+		"total": 1123,
+		"version": "11.11.0",
 		"author": {
 			"name": "Roberto Huertas",
 			"url": "https://github.com/vscode-icons/vscode-icons"
@@ -1077,8 +1142,8 @@
 	},
 	"codicon": {
 		"name": "Codicons",
-		"total": 408,
-		"version": "0.0.28",
+		"total": 411,
+		"version": "0.0.30",
 		"author": {
 			"name": "Microsoft Corporation",
 			"url": "https://github.com/microsoft/vscode-codicons"
@@ -1099,8 +1164,8 @@
 	},
 	"pepicons": {
 		"name": "Pepicons",
-		"total": 316,
-		"version": "1.0.12",
+		"total": 410,
+		"version": "1.1.0",
 		"author": {
 			"name": "CyCraft",
 			"url": "https://github.com/CyCraft/pepicons"
@@ -1166,8 +1231,8 @@
 	},
 	"fa6-solid": {
 		"name": "Font Awesome Solid",
-		"total": 1128,
-		"version": "6.0.0",
+		"total": 1387,
+		"version": "6.1.1",
 		"author": {
 			"name": "Dave Gandy",
 			"url": "https://github.com/FortAwesome/Font-Awesome"
@@ -1189,8 +1254,8 @@
 	},
 	"fa6-regular": {
 		"name": "Font Awesome Regular",
-		"total": 161,
-		"version": "6.0.0",
+		"total": 162,
+		"version": "6.1.1",
 		"author": {
 			"name": "Dave Gandy",
 			"url": "https://github.com/FortAwesome/Font-Awesome"
@@ -1212,15 +1277,15 @@
 	},
 	"octicon": {
 		"name": "Octicons",
-		"total": 490,
-		"version": "17.0.0",
+		"total": 499,
+		"version": "17.2.0",
 		"author": {
 			"name": "GitHub",
 			"url": "https://github.com/primer/octicons/"
 		},
 		"license": {
-			"title": "Open Font License",
-			"spdx": "OFL-1.1",
+			"title": "MIT",
+			"spdx": "MIT",
 			"url": "https://github.com/primer/octicons/blob/main/LICENSE"
 		},
 		"samples": [
@@ -1235,7 +1300,7 @@
 	"ooui": {
 		"name": "OOUI",
 		"total": 322,
-		"version": "0.43.0",
+		"version": "0.44.0",
 		"author": {
 			"name": "OOUI Team",
 			"url": "https://github.com/wikimedia/oojs-ui"
@@ -1278,7 +1343,7 @@
 	},
 	"openmoji": {
 		"name": "OpenMoji",
-		"total": 3944,
+		"total": 4027,
 		"author": {
 			"name": "OpenMoji",
 			"url": "https://github.com/hfg-gmuend/openmoji"
@@ -1299,7 +1364,7 @@
 	},
 	"twemoji": {
 		"name": "Twitter Emoji",
-		"total": 3556,
+		"total": 3668,
 		"author": {
 			"name": "Twitter",
 			"url": "https://github.com/twitter/twemoji"
@@ -1455,8 +1520,8 @@
 	},
 	"bxl": {
 		"name": "BoxIcons Logo",
-		"total": 149,
-		"version": "2.1.1",
+		"total": 153,
+		"version": "2.1.2",
 		"author": {
 			"name": "Atisa",
 			"url": "https://github.com/atisawd/boxicons"
@@ -1477,7 +1542,7 @@
 	},
 	"logos": {
 		"name": "SVG Logos",
-		"total": 1401,
+		"total": 1438,
 		"author": {
 			"name": "Gil Barbara",
 			"url": "https://github.com/gilbarbara/logos"
@@ -1497,8 +1562,8 @@
 	},
 	"simple-icons": {
 		"name": "Simple Icons",
-		"total": 2181,
-		"version": "6.12.0",
+		"total": 2246,
+		"version": "6.21.0",
 		"author": {
 			"name": "Simple Icons Collaborators",
 			"url": "https://github.com/simple-icons/simple-icons"
@@ -1542,8 +1607,8 @@
 	},
 	"fa6-brands": {
 		"name": "Font Awesome Brands",
-		"total": 459,
-		"version": "6.0.0",
+		"total": 462,
+		"version": "6.1.1",
 		"author": {
 			"name": "Dave Gandy",
 			"url": "https://github.com/FortAwesome/Font-Awesome"
@@ -1565,7 +1630,7 @@
 	},
 	"arcticons": {
 		"name": "Arcticons",
-		"total": 3777,
+		"total": 4238,
 		"author": {
 			"name": "Donno",
 			"url": "https://github.com/Donno/Arcticons"
@@ -1673,7 +1738,7 @@
 	"flag": {
 		"name": "Flag Icons",
 		"total": 526,
-		"version": "6.1.1",
+		"version": "6.3.0",
 		"author": {
 			"name": "Panayiotis Lipiridis",
 			"url": "https://github.com/lipis/flag-icons"
@@ -1693,7 +1758,7 @@
 	},
 	"circle-flags": {
 		"name": "Circle Flags",
-		"total": 296,
+		"total": 373,
 		"version": "1.0.0",
 		"author": {
 			"name": "HatScripts",
@@ -1846,8 +1911,8 @@
 	},
 	"academicons": {
 		"name": "Academicons",
-		"total": 147,
-		"version": "1.9.1",
+		"total": 149,
+		"version": "1.9.2",
 		"author": {
 			"name": "James Walsh",
 			"url": "https://github.com/jpswalsh/academicons"
