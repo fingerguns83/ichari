@@ -37,4 +37,12 @@ class Claim extends Model
         $status = DB::table('claim_statuses')->where('id', '=', $this->status)->first();
         return $status->name;
     }
+    public function getRequestedByName(){
+        $user = User::where('id', $this->requested_by)->first();
+        return $user->username;
+    }
+    public function getStatusColor(){
+        $status = DB::table('claim_statuses')->where('id', $this->status)->first();
+        return $status->color;
+    }
 }

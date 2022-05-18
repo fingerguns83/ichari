@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7d5ddeeda6df2fdfcf6211493667b2cd",
+    "content-hash": "84e2be1bc8d57ab244e75dc451c66872",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -883,6 +883,77 @@
                 }
             ],
             "time": "2021-10-06T17:43:30+00:00"
+        },
+        {
+            "name": "iconify/json",
+            "version": "2.1.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/iconify/icon-sets.git",
+                "reference": "54f2dd4c0e11dedf96f4ef69e608dc1bdee29a69"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/iconify/icon-sets/zipball/54f2dd4c0e11dedf96f4ef69e608dc1bdee29a69",
+                "reference": "54f2dd4c0e11dedf96f4ef69e608dc1bdee29a69",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Iconify\\IconsJSON\\": "lib"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Iconify icons collection in JSON format",
+            "homepage": "https://iconify.design/icon-sets/",
+            "support": {
+                "issues": "https://github.com/iconify/icon-sets/issues",
+                "source": "https://github.com/iconify/icon-sets/tree/2.1.11"
+            },
+            "time": "2022-03-04T07:46:24+00:00"
+        },
+        {
+            "name": "iconify/json-tools",
+            "version": "1.0.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/iconify/json-tools.php.git",
+                "reference": "3d24f282b309cb17e3cb80192ae071dd47bce9e0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/iconify/json-tools.php/zipball/3d24f282b309cb17e3cb80192ae071dd47bce9e0",
+                "reference": "3d24f282b309cb17e3cb80192ae071dd47bce9e0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "iconify/json": "1.*",
+                "phpunit/phpunit": "9.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Iconify\\JSONTools\\": "lib"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Functions for manipulating Iconify JSON SVG collections.",
+            "homepage": "https://iconify.design/",
+            "support": {
+                "issues": "https://github.com/iconify/json-tools.php/issues",
+                "source": "https://github.com/iconify/json-tools.php/tree/1.0.10"
+            },
+            "time": "2020-12-16T13:04:11+00:00"
         },
         {
             "name": "laravel/framework",

@@ -6,8 +6,12 @@
     ->where('user_id', '=', Auth::id())
     ->get();
 ?>
-@if ($userClaims)
-  @foreach ($userClaims as $userClaim)
-    @include('/layouts/components/card', ['format' => 'claim_card'])
-  @endforeach
-@endif
+<div class="flex content-center justify-center h-3/4 mt-12">
+  <div class="w-full grid gap-2 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 px-12 overflow-y-scroll scrollbar-thin scrollbar-thumb-sky-700 scrollbar-track-[#131314]">
+    @if ($userClaims)
+      @foreach ($userClaims as $userClaim)
+        @include('/layouts/components/card', ['format' => 'claim_card'])
+      @endforeach
+    @endif
+  </div>
+</div>

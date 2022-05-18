@@ -1,11 +1,14 @@
 <?php
 use App\Models\User;
-$users = User::all();
+$users = User::orderBy('perm_level', 'desc')->get();
 ?>
-
-@foreach ($users as $user)
-  @include('/layouts/components/list_item', ['format' => 'user_list', 'class' => 'user-container'])
-@endforeach
+<div class="flex content-center justify-center h-3/4 px-12 mt-12">
+  <div class="border-4 dark:border-0 rounded-2xl border-gray-500 bg-[#1b1c1d] overflow-y-scroll scrollbar-hide">
+    @foreach ($users as $user)
+      @include('/layouts/components/list_item', ['format' => 'user_list', 'class' => 'user-container'])
+    @endforeach
+  </div>
+</div>
 
 <script>
   function banUser(user){

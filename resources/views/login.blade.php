@@ -23,25 +23,23 @@
       }
     </style>
   </head>
-  <body class="bg-gradient-to-bl from-slate-200 to-neutral-200 dark:from-gray-700 dark:to-slate-700 h-screen">
+  <body class="bg-[#131314] h-screen">
     <div class="flex justify-center items-center h-screen">
-      <div class="bg-neutral-200 dark:bg-[#292b30] text-slate-900 dark:text-slate-200 h-1/3 min-h-[280px] w-3/4 md:w-1/2 lg:w-2/5 xl:w-1/3 grid grid-cols-3 rounded-3xl border-2 border-neutral-400 dark:border-slate-200 shadow-xl">
-        <div class="col-span-1 border-r-neutral-400 dark:bg-sky-700 rounded-l-3xl border-r-2 h-full flex justify-center text-center items-center">
+      <div class="bg-[#1b1c1d] text-slate-200 h-1/3 min-h-[280px] w-3/4 md:w-1/2 lg:w-2/5 xl:w-1/3 grid grid-cols-3 rounded-3xl border-2 border-slate-200 shadow-xl">
+        <div class="col-span-1 border-r-neutral-400 bg-[#1b1c1d] rounded-l-3xl border-r-2 h-full flex justify-center text-center items-center">
           <div style="text-align: center;">
-            <img src="/images/ichari_blue.png" width="150" height="150"><br>
-            <span class="font-semibold text-4xl">iCHARI</span>
+            <img src="/images/v_logo.png" width="175" height="175"><br>
           </div>
         </div>
         <div class="col-span-2 py-4 flex justify-center text-center items-center">
           <div class="h-full flex flex-col justify-center items-center content-center">
-            <img src="/images/impulse_head.png" width="80" height="80" class="rounded-full border-2 border-slate-700 dark:border-slate-200">
             <p class="mt-4">
-              <span class="underline font-medium text-2xl">impulseSV Patron Server</span><br>
+              <span class="underline font-medium text-2xl">impulseSV Patron Server</span><br><br>
             </p>
             <button class="w-full h-1/5 mt-10 bg-[#4648ef] hover:bg-[#363AB7] rounded-2xl px-3  active:text-yellow-500" onclick="auth()">
               <div class="h-full w-full flex justify-center items-center content-center text-center">
                 <span class="iconify" data-icon="simple-icons:discord" style="color: white; display: inline;" data-width="40" data-height="40"></span>
-                <span class="text-white underline font-medium text-lg ml-3">Log in with Discord</span>
+                <span class="text-white underline font-medium text-xl ml-3">Log in with Discord</span>
               </div>
             </button>
           </div>

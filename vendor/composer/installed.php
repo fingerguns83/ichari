@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '3780749fc837b880518d33d9a9f72e545366b34e',
+    'reference' => '2122c2bd82f3e526930c0af533faf32b6208563a',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -186,6 +186,24 @@
       array (
       ),
       'reference' => '8c3d0a3f6af734494ad8f6fbbee0ba92422859f3',
+    ),
+    'iconify/json' => 
+    array (
+      'pretty_version' => '2.1.11',
+      'version' => '2.1.11.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '54f2dd4c0e11dedf96f4ef69e608dc1bdee29a69',
+    ),
+    'iconify/json-tools' => 
+    array (
+      'pretty_version' => '1.0.10',
+      'version' => '1.0.10.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '3d24f282b309cb17e3cb80192ae071dd47bce9e0',
     ),
     'illuminate/auth' => 
     array (
@@ -427,7 +445,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '3780749fc837b880518d33d9a9f72e545366b34e',
+      'reference' => '2122c2bd82f3e526930c0af533faf32b6208563a',
     ),
     'laravel/sail' => 
     array (

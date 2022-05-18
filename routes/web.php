@@ -40,6 +40,8 @@ Route::get('/auth/callback', function(){
     $user = User::where('oauth_id', $discordUser->id)->first();
     if ($user){
         if (!$user->is_banned){
+            $user->avatar = $discordUser->avatar;
+            $user->save();
             Auth::login($user, true);
             return redirect('/module/dashboard');
         }

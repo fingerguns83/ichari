@@ -1,14 +1,17 @@
 <?php
-$sections = ['dimensions', 'areas', 'claim_types', 'claims'];
+  $sections = ['dimensions', 'areas', 'claim_types', 'administrative_claims', 'claims'];
 ?>
-@includeIf('/layouts/dialog', ['dialog' => 'add_land', 'dialogId' => 'addLand'])
-@foreach($sections as $section)
-  @includeIf('/modules/land_management/components/section', ['sectionName' => $section])
-@endforeach
-
+<div class="flex content-center justify-center h-9/12 mt-8 px-12">
+  <div class="w-1/2 h-full flex-col overflow-y-scroll scrollbar-hide">
+    @includeIf('/layouts/dialog', ['dialog' => 'add_land', 'dialogId' => 'addLand'])
+    @foreach($sections as $section)
+      @includeIf('/modules/land_management/components/section', ['sectionName' => $section])
+    @endforeach
+  </div>
+</div>
 <script>
   $('[id$=expand]').click(function(){
-    var sections = ['dimensions', 'areas', 'claim_types', 'claims'];
+    var sections = ['dimensions', 'areas', 'claim_types', 'administrative_claims', 'claims'];
     var selected = $(this).attr('id').replace('-expand', '');
     var other = sections.filter(section => section !== selected);
     other.forEach(function(section){
@@ -32,7 +35,8 @@ $sections = ['dimensions', 'areas', 'claim_types', 'claims'];
 <script>
   $('[id^=add-').click(function(){
     var sectionID = $(this).attr('id').replace('add-', '').slice(0, -1);
-    var sectionTitle = sectionID.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()});
+    var sectionTitle = sectionID.replace('_', ' ');
+    var sectionTitle = sectionTitle.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()});
     $('#addLand #dialog-title').html('Add '+sectionTitle);
     $('#'+sectionID).show();
     $('#addLand').show();

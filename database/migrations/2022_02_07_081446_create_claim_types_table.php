@@ -17,17 +17,15 @@ class CreateClaimTypesTable extends Migration
             $table->id();
             $table->string('name');
             $table->longText('icon');
-            $table->string('measured_by');
+            $table->longText('preapportioned');
             $table->integer('size');
             $table->integer('shareable');
-            $table->string('alternate_trigger');
-            $table->string('alternate_measured_by');
-            $table->integer('alternate_size');
-            $table->integer('prompt_id');
-            $table->text('area_allowed');
+            $table->integer('shared_size');
+            $table->integer('buffer');
+            $table->integer('area_allowed');
             $table->integer('amount_allowed');
             $table->integer('review_requires_team');
-            $table->integer('buffer');
+            $table->bigInteger('expire_time');
 
         });
     }

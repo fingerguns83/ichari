@@ -135,6 +135,8 @@ class ComposerStaticInit1c18c034aa71d292960a4cb77ba477fb
         array (
             'Illuminate\\Support\\' => 19,
             'Illuminate\\' => 11,
+            'Iconify\\JSONTools\\' => 18,
+            'Iconify\\IconsJSON\\' => 18,
         ),
         'G' => 
         array (
@@ -427,6 +429,14 @@ class ComposerStaticInit1c18c034aa71d292960a4cb77ba477fb
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
         ),
+        'Iconify\\JSONTools\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/iconify/json-tools/lib',
+        ),
+        'Iconify\\IconsJSON\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/iconify/json/lib',
+        ),
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
@@ -537,6 +547,7 @@ class ComposerStaticInit1c18c034aa71d292960a4cb77ba477fb
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\ClaimRequestController' => __DIR__ . '/../..' . '/app/Http/Controllers/ClaimRequestController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\LandManagementController' => __DIR__ . '/../..' . '/app/Http/Controllers/LandManagementController.php',
         'App\\Http\\Controllers\\ModelFetchController' => __DIR__ . '/../..' . '/app/Http/Controllers/ModelFetchController.php',
         'App\\Http\\Controllers\\ModuleController' => __DIR__ . '/../..' . '/app/Http/Controllers/ModuleController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
@@ -548,7 +559,10 @@ class ComposerStaticInit1c18c034aa71d292960a4cb77ba477fb
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Models\\Area' => __DIR__ . '/../..' . '/app/Models/Area.php',
         'App\\Models\\Claim' => __DIR__ . '/../..' . '/app/Models/Claim.php',
+        'App\\Models\\ClaimType' => __DIR__ . '/../..' . '/app/Models/ClaimType.php',
+        'App\\Models\\Dimension' => __DIR__ . '/../..' . '/app/Models/Dimension.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Notifications\\ClaimStatusChanged' => __DIR__ . '/../..' . '/app/Notifications/ClaimStatusChanged.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
@@ -1645,6 +1659,9 @@ class ComposerStaticInit1c18c034aa71d292960a4cb77ba477fb
         'Hamcrest\\Type\\IsString' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Type/IsString.php',
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
+        'Iconify\\IconsJSON\\Finder' => __DIR__ . '/..' . '/iconify/json/lib/Finder.php',
+        'Iconify\\JSONTools\\Collection' => __DIR__ . '/..' . '/iconify/json-tools/lib/Collection.php',
+        'Iconify\\JSONTools\\SVG' => __DIR__ . '/..' . '/iconify/json-tools/lib/SVG.php',
         'Illuminate\\Auth\\Access\\AuthorizationException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/AuthorizationException.php',
         'Illuminate\\Auth\\Access\\Events\\GateEvaluated' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/Events/GateEvaluated.php',
         'Illuminate\\Auth\\Access\\Gate' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/Gate.php',

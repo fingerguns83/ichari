@@ -36,7 +36,7 @@
 <div id="icon" class="flex w-full px-6 mt-6 content-center items-center justify-center">
   <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="6em" height="6em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="{{$type->icon}}" fill="currentColor" onclick="alert('Claim ID: {{$claim->id}}')"/></svg>  
 </div>
-<div id="type" class="flex flex-col w-full px-6 justify-center bg-sky-200 dark:bg-sky-700 border-y-2 border-y-slate-200">
+<div id="type" class="flex flex-col w-full px-6 justify-center bg-sky-700 border-y-2 border-y-slate-200">
   <span class="block w-full font-medium text-2xl text-center"><?=$type->name; ?></span>
   <span class="block w-full font-medium text-center">({{$claim->getLocationString()}})</span>
 </div>

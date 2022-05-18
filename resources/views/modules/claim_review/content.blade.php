@@ -13,11 +13,15 @@
     ->get();
   }
 ?>
-@if ($claimTypes)
-  @foreach ($claimTypes as $type)
-    @include('/layouts/components/card', ['format' => 'review_card', 'id' => "type-" . $type->id])
-  @endforeach
-@endif
+<div class="flex content-center justify-center h-3/4 mt-12">
+  <div class="w-full grid gap-2 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 px-12 overflow-y-scroll scrollbar-thin scrollbar-thumb-sky-700 scrollbar-track-[#131314]">
+    @if ($claimTypes)
+      @foreach ($claimTypes as $type)
+        @include('/layouts/components/card', ['format' => 'review_card', 'id' => "type-" . $type->id])
+      @endforeach
+    @endif
+  </div>
+</div>
 <script>
   function loadNew(section){
     var url = "/api/claims/fetch_pending?type="+section;
@@ -57,10 +61,10 @@
           analysis.html('OK');
         }
 
-        /*if (claim.requested_by.id == {{Auth::id()}}){
+        if (claim.requested_by.id == {{Auth::id()}}){
           actions.hide();
           selfmod.show();
-        }*/
+        }
 
         denyButton.click(function(){
           deny(claim.id, section);

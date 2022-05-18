@@ -10,7 +10,7 @@ foreach ($perms as $perm){
 ?>
 <div id="{{strtolower($user->username)}}" class="w-full grid grid-cols-12">
   <div class="flex col-span-5 content-center items-center">
-    <img class="rounded-full border dark:border-slate-200" src="{{$user->avatar}}" width="32">
+    <img class="rounded-full border border-slate-200" src="{{$user->avatar}}" width="32">
     <span class="ml-2 text-2xl font-semibold">{{$user->username}}</span>
   </div>
   <div class="flex col-span-3 text-xl content-center items-center">

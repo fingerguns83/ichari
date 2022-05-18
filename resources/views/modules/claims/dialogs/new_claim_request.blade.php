@@ -27,16 +27,16 @@ use Symfony\Component\Routing\Route;
 <!--location-->
 <div>
   <div id="location" class="content-center items-center justify-left w-full" style="display: none;">
-    <span id="location-label" class="block mr-2">{{ Form:: label('location', '')}}</span>
+    <span id="location-label" class="block mr-2">{{ Form:: label('Enter coordinates of opposite corners of requested area:', '')}}</span>
     <div class="flex justify-left items-center content-center">
-      <div class="w-1/2 items-baseline">
-        <div id="coords1" class="flex content-center items-center justify-left">
+      <div id="location-coords" class="w-1/2 items-baseline">
+        <div class="flex content-center items-center justify-left">
           <span class="mr-2">{{ Form::label('x1', 'X: ') }}</span>
           {{ Form::number('x1', '0', ['class' => 'w-3/5 dark:bg-slate-600']) }}
           <span class="m-2">{{ Form::label('z1', 'Z: ') }}</span>
           {{ Form::number('z1', '0', ['class' => 'w-3/5 dark:bg-slate-600']) }}
         </div>
-        <div id="coords2" class="flex content-center items-center justify-left" style="display:none;">
+        <div class="flex content-center items-center justify-left">
           <span class="mr-2">{{ Form::label('x2', 'X: ') }}</span>
           {{ Form::number('x2', '0', ['class' => 'w-3/5 dark:bg-slate-600']) }}
           <span class="m-2">{{ Form::label('z2', 'Z: ') }}</span>
@@ -55,6 +55,11 @@ use Symfony\Component\Routing\Route;
       <span id="size-output-error" class="text-xl ml-4 text-red-500"></span>
     </div>
   </div>
+</div>
+
+<!--Preapportionment-->
+<div id="apportionment" style="display:none;">
+  teset
 </div>
 
 <!--Co-Owners-->
@@ -118,23 +123,20 @@ use Symfony\Component\Routing\Route;
 
       $.get('https://ichari.isvserver.live/api/fetch_model?table=claim_types&id='+typeId, function(data){
         claimType = jQuery.parseJSON(data);
-        switch(claimType.prompt_id){
-          case 1:
-            $('#location-label').html('Enter coordinates of opposite corners of requested area:');
-            $('#coords2').show();
-            break;
-          case 2:
-            $('#location-label').html('Enter any coordinate in your center chunk:');
-            break;
-          default:
-            window.location.href = "https://ichari.isvserver.live/section/claims";
-        }
+        console.log(claimType);
         if (claimType.shareable){
           $('#shared-claim').show();
-        }  
-        $('#claim-type').hide("slide", { direction: "left" }, 400, function(){
-          $('#location').fadeIn(400);
-        });
+        }
+        if (claimType.preapportioned){
+          $('#claim-type').hide("slide", { direction: "left" }, 400, function(){
+            $('#apportionment').fadeIn(400);
+          });
+        } 
+        else { 
+          $('#claim-type').hide("slide", { direction: "left" }, 400, function(){
+            $('#location').fadeIn(400);
+          });
+        }
       });   
   });
 
@@ -154,7 +156,6 @@ use Symfony\Component\Routing\Route;
       var chunkSubtract = -Math.round(-(claimType.shared_size/2));
     }
 
-    if (claimType.prompt_id == 1){
       input_x1 = $('#x1').val();
       input_z1 = $('#z1').val();
       input_x2 = $('#x2').val();
@@ -181,37 +182,31 @@ use Symfony\Component\Routing\Route;
       var size_z = Math.abs(coords['z2'] - coords['z1']) + 1;
       var output = size_x+' × '+size_z;
 
-      if (size_x != claimType.size || size_z != claimType.size){
-        $('#size-output-error').html('Incorrect Size');
+      if (!shared){
+        if (size_x != claimType.size || size_z != claimType.size){
+          $('#size-output-error').html('Incorrect Size');
+          locationValid = false;
+        }
+        else {
+          $('#size-output-error').html('');
+          locationValid = true;
+          claimCoords = coords;
+        }
       }
       else {
-        $('#size-output-error').html('');
-        locationValid = true;
-        claimCoords = coords;
+        if (size_x != claimType.shared_size || size_z != claimType.shared_size){
+          $('#size-output-error').html('Incorrect Size');
+          locationValid = false;
+        }
+        else {
+          $('#size-output-error').html('');
+          locationValid = true;
+          claimCoords = coords;
+        }
       }
 
       $('#size-output').html(output);
-    }
-    else {
-      input_x = $('#x1').val();
-      input_z = $('#z1').val();
-      centerChunkX = Math.floor(input_x / 16);
-      centerChunkZ = Math.floor(input_z / 16);
-      coords['x1'] = (centerChunkX - chunkSubtract)*16;
-      coords['z1'] = (centerChunkZ - chunkSubtract)*16;
-      coords['x2'] = (centerChunkX + chunkAdd)*16 - 1;
-      coords['z2'] = (centerChunkZ + chunkAdd)*16 -1;
-
-      var size_x = coords['x2'] - coords['x1'] + 1;
-      var size_z = coords['z2'] - coords['z1'] + 1;
-
-      var output = coords['x1']+', '+coords['z1']+' × '+coords['x2']+', '+coords['z2'];
-      if (outputSize){
-        $('#size-output').html(output);
-      }
-      locationValid = true;
-      claimCoords = coords;
-    }
+    
   }
 
   $('#check-size').click(function(){
@@ -241,6 +236,7 @@ use Symfony\Component\Routing\Route;
         });
       }
     }
+
   });
 
 

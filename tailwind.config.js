@@ -13,5 +13,6 @@ module.exports = {
       strategy: 'class',
     }),
     require('tailwind-scrollbar-hide'),
+    require('tailwind-scrollbar'),
   ],
 }
