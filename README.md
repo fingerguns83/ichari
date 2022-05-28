@@ -1,6 +1,6 @@
 # ichari
 
-**ichari** is a community organization tool for Minecraft Servers in the early stages of development.
+**ichari** is a community organization tool for Minecraft Servers that is in the early stages of development.
 
 **ichari** aims to be the equivalent of a company's "intranet", where players can handle land claims; manage and search shops and shop stock; view server events; create and participate in polls; and organize projects.
 
